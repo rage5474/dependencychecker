@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.raphaelgeissler.dependencychecker.model/src"
+    modelPluginID="de.raphaelgeissler.dependencychecker.model" modelName="Dependencychecker"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>dependencychecker.ecore</foreignModel>
+  <genPackages prefix="Dependencychecker" basePackage="de.raphaelgeissler" disposableProviderFactory="true"
+      ecorePackage="dependencychecker.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dependencychecker.ecore#//MatchType">
+      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//MatchType/STARTSWITH"/>
+      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//MatchType/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//MatchType/REGEX"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dependencychecker.ecore#//SelectionType">
+      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//SelectionType/EXCLUDE"/>
+      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//SelectionType/INCLUDE"/>
+    </genEnums>
+    <genClasses ecoreClass="dependencychecker.ecore#//Checker">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//Checker/name"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dependencychecker.ecore#//Checker/componentDefinitions"/>
+    </genClasses>
+    <genClasses ecoreClass="dependencychecker.ecore#//ComponentDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentDescription/name"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dependencychecker.ecore#//ComponentDescription/dependencies"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dependencychecker.ecore#//ComponentDescription/componentItems"/>
+    </genClasses>
+    <genClasses ecoreClass="dependencychecker.ecore#//Dependencies">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//Dependencies/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//Dependencies/components"/>
+    </genClasses>
+    <genClasses ecoreClass="dependencychecker.ecore#//ComponentItemDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentItemDescription/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentItemDescription/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentItemDescription/matchType"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

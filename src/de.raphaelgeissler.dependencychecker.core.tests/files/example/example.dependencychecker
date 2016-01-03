@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencychecker:Checker xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:dependencychecker="http://www.example.org/dependencychecker">
+  <componentDefinitions name="de.raphaelgeissler.example.core.component">
+    <dependencies>
+      <components>de.raphaelgeissler.example.ui.component</components>
+    </dependencies>
+    <componentItems name="de.raphaelgeissler.example.core.plugin" value="de.raphaelgeissler.example.core"/>
+  </componentDefinitions>
+  <componentDefinitions name="de.raphaelgeissler.example.model.component">
+    <dependencies>
+      <components>de.raphaelgeissler.example.core.component</components>
+      <components>de.raphaelgeissler.example.ui.component</components>
+    </dependencies>
+    <componentItems name="de.raphaelgeissler.example.core.plugin" value="de.raphaelgeissler.example.model"/>
+  </componentDefinitions>
+  <componentDefinitions name="de.raphaelgeissler.example.ui.component">
+    <dependencies>
+      <components>de.raphaelgeissler.example.model.component</components>
+    </dependencies>
+    <componentItems name="de.raphaelgeissler.example.ui.plugin" value="de.raphaelgeissler.example.ui"/>
+  </componentDefinitions>
+</dependencychecker:Checker>

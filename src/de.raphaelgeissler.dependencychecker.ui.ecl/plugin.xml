@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+         <command
+               commandId="de.raphaelgeissler.dependencychecker.ui.ecl.check.command"
+               label="Check dependencies now ..."
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="de.raphaelgeissler.dependencychecker.ui.ecl.CheckNowHandler"
+            commandId="de.raphaelgeissler.dependencychecker.ui.ecl.check.command">
+      </handler>
+   </extension>
+
+</plugin>

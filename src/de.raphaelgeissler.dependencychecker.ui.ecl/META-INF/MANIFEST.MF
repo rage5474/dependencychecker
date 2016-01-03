@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dependencychecker UI ECL
+Bundle-SymbolicName: de.raphaelgeissler.dependencychecker.ui.ecl;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.resources,
+ org.eclipse.core.runtime;bundle-version="3.11.1",
+ de.raphaelgeissler.dependencychecker.core;bundle-version="1.0.0"

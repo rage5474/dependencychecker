@@ -1,0 +1,27 @@
+<project> 
+<modelVersion>4.0.0</modelVersion>
+  <groupId>de.raphaelgeissler</groupId>
+  <artifactId>de.raphaelgeissler.dependencychecker.tycho.aggregator</artifactId>
+  <packaging>pom</packaging>
+  
+   <parent>
+    <groupId>de.raphaelgeissler</groupId>
+    <artifactId>de.raphaelgeissler.dependencychecker.tycho.parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../de.raphaelgeissler.dependencychecker.tycho.parent</relativePath>
+  </parent>
+
+  <modules>
+  	<module>../de.raphaelgeissler.dependencychecker.core</module>
+    <module>../de.raphaelgeissler.dependencychecker.core.tests</module>
+    <module>../de.raphaelgeissler.dependencychecker.feature</module>
+    <module>../de.raphaelgeissler.dependencychecker.model</module>
+    <module>../de.raphaelgeissler.dependencychecker.model.edit</module>
+    <module>../de.raphaelgeissler.dependencychecker.model.editor</module>
+ 	<module>../de.raphaelgeissler.dependencychecker.tycho.updatesite</module>
+ 	<module>../de.raphaelgeissler.dependencychecker.ui.builder</module>
+    <module>../de.raphaelgeissler.dependencychecker.ui.ecl</module>
+  </modules>
+<version>1.0.0</version>
+</project> 
+

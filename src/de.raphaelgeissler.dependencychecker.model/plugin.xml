@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dependencychecker -->
+      <package
+            uri="http://www.example.org/dependencychecker"
+            class="de.raphaelgeissler.dependencychecker.DependencycheckerPackage"
+            genModel="model/dependencychecker.genmodel"/>
+   </extension>
+
+</plugin>

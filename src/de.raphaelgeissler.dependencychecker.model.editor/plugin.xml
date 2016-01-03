@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated dependencychecker -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.raphaelgeissler.dependencychecker.presentation.DependencycheckerModelWizardID"
+            name="%_UI_DependencycheckerModelWizard_label"
+            class="de.raphaelgeissler.dependencychecker.presentation.DependencycheckerModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DependencycheckerModelFile.gif">
+         <description>%_UI_DependencycheckerModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated dependencychecker -->
+      <editor
+            id="de.raphaelgeissler.dependencychecker.presentation.DependencycheckerEditorID"
+            name="%_UI_DependencycheckerEditor_label"
+            icon="icons/full/obj16/DependencycheckerModelFile.gif"
+            extensions="dependencychecker"
+            class="de.raphaelgeissler.dependencychecker.presentation.DependencycheckerEditor"
+            contributorClass="de.raphaelgeissler.dependencychecker.presentation.DependencycheckerActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
