@@ -8,7 +8,7 @@
 
 ### How can I install this Eclipse Feature?
 Installation can be done via Eclipse Update-Site:
-https://github.com/rage5474/updatesites/blob/master/dependencychecker/0.0.1/?raw=true
+https://github.com/rage5474/updatesites/blob/master/dependencychecker/0.0.1?raw=true
 
 ### Under which license is this Eclipse Feature published?
 EPL 1.0. See http://www.eclipse.org/org/documents/epl-v10.php.
