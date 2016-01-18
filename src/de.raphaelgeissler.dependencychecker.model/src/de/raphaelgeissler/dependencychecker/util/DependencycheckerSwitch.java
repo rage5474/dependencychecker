@@ -78,12 +78,6 @@ public class DependencycheckerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DependencycheckerPackage.DEPENDENCIES: {
-				Dependencies dependencies = (Dependencies)theEObject;
-				T result = caseDependencies(dependencies);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION: {
 				ComponentItemDescription componentItemDescription = (ComponentItemDescription)theEObject;
 				T result = caseComponentItemDescription(componentItemDescription);
@@ -121,21 +115,6 @@ public class DependencycheckerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseComponentDescription(ComponentDescription object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dependencies</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Dependencies</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDependencies(Dependencies object) {
 		return null;
 	}
 

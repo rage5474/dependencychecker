@@ -12,22 +12,14 @@
       <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//MatchType/EQUALS"/>
       <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//MatchType/REGEX"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dependencychecker.ecore#//SelectionType">
-      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//SelectionType/EXCLUDE"/>
-      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//SelectionType/INCLUDE"/>
-    </genEnums>
     <genClasses ecoreClass="dependencychecker.ecore#//Checker">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//Checker/name"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dependencychecker.ecore#//Checker/componentDefinitions"/>
     </genClasses>
     <genClasses ecoreClass="dependencychecker.ecore#//ComponentDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentDescription/name"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dependencychecker.ecore#//ComponentDescription/dependencies"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dependencychecker.ecore#//ComponentDescription/componentItems"/>
-    </genClasses>
-    <genClasses ecoreClass="dependencychecker.ecore#//Dependencies">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//Dependencies/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//Dependencies/components"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentDescription/forbiddenComponents"/>
     </genClasses>
     <genClasses ecoreClass="dependencychecker.ecore#//ComponentItemDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentItemDescription/name"/>

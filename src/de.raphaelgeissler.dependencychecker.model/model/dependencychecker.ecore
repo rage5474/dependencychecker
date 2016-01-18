@@ -9,28 +9,19 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" eType="#//Dependencies"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentItems" upperBound="-1"
         eType="#//ComponentItemDescription" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="groupentries"/>
       </eAnnotations>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Dependencies">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SelectionType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="components" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forbiddenComponents" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MatchType">
     <eLiterals name="STARTSWITH"/>
     <eLiterals name="EQUALS" value="1"/>
     <eLiterals name="REGEX" value="2"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="SelectionType">
-    <eLiterals name="EXCLUDE"/>
-    <eLiterals name="INCLUDE" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentItemDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

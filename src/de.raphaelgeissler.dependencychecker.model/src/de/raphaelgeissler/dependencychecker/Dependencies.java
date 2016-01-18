@@ -3,7 +3,6 @@
 package de.raphaelgeissler.dependencychecker;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.raphaelgeissler.dependencychecker.Dependencies#getType <em>Type</em>}</li>
- *   <li>{@link de.raphaelgeissler.dependencychecker.Dependencies#getComponents <em>Components</em>}</li>
+ *   <li>{@link de.raphaelgeissler.dependencychecker.Dependencies#getNotAllowedComponents <em>Not Allowed Components</em>}</li>
  * </ul>
  *
  * @see de.raphaelgeissler.dependencychecker.DependencycheckerPackage#getDependencies()
@@ -54,19 +53,19 @@ public interface Dependencies extends EObject {
 	void setType(SelectionType value);
 
 	/**
-	 * Returns the value of the '<em><b>Components</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Not Allowed Components</b></em>' containment reference list.
+	 * The list contents are of type {@link de.raphaelgeissler.dependencychecker.ComponentDescription}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Components</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Not Allowed Components</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Components</em>' attribute list.
-	 * @see de.raphaelgeissler.dependencychecker.DependencycheckerPackage#getDependencies_Components()
-	 * @model
+	 * @return the value of the '<em>Not Allowed Components</em>' containment reference list.
+	 * @see de.raphaelgeissler.dependencychecker.DependencycheckerPackage#getDependencies_NotAllowedComponents()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<String> getComponents();
+	EList<ComponentDescription> getNotAllowedComponents();
 
 } // Dependencies

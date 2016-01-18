@@ -123,22 +123,22 @@ public interface DependencycheckerPackage extends EPackage {
 	int COMPONENT_DESCRIPTION__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Dependencies</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_DESCRIPTION__DEPENDENCIES = 1;
-
-	/**
 	 * The feature id for the '<em><b>Component Items</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_DESCRIPTION__COMPONENT_ITEMS = 2;
+	int COMPONENT_DESCRIPTION__COMPONENT_ITEMS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Forbidden Components</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Component Description</em>' class.
@@ -159,52 +159,6 @@ public interface DependencycheckerPackage extends EPackage {
 	int COMPONENT_DESCRIPTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.raphaelgeissler.dependencychecker.impl.DependenciesImpl <em>Dependencies</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.raphaelgeissler.dependencychecker.impl.DependenciesImpl
-	 * @see de.raphaelgeissler.dependencychecker.impl.DependencycheckerPackageImpl#getDependencies()
-	 * @generated
-	 */
-	int DEPENDENCIES = 2;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPENDENCIES__TYPE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Components</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPENDENCIES__COMPONENTS = 1;
-
-	/**
-	 * The number of structural features of the '<em>Dependencies</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPENDENCIES_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Dependencies</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPENDENCIES_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link de.raphaelgeissler.dependencychecker.impl.ComponentItemDescriptionImpl <em>Component Item Description</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,7 +166,7 @@ public interface DependencycheckerPackage extends EPackage {
 	 * @see de.raphaelgeissler.dependencychecker.impl.DependencycheckerPackageImpl#getComponentItemDescription()
 	 * @generated
 	 */
-	int COMPONENT_ITEM_DESCRIPTION = 3;
+	int COMPONENT_ITEM_DESCRIPTION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -267,18 +221,7 @@ public interface DependencycheckerPackage extends EPackage {
 	 * @see de.raphaelgeissler.dependencychecker.impl.DependencycheckerPackageImpl#getMatchType()
 	 * @generated
 	 */
-	int MATCH_TYPE = 4;
-
-	/**
-	 * The meta object id for the '{@link de.raphaelgeissler.dependencychecker.SelectionType <em>Selection Type</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.raphaelgeissler.dependencychecker.SelectionType
-	 * @see de.raphaelgeissler.dependencychecker.impl.DependencycheckerPackageImpl#getSelectionType()
-	 * @generated
-	 */
-	int SELECTION_TYPE = 5;
-
+	int MATCH_TYPE = 3;
 
 	/**
 	 * Returns the meta object for class '{@link de.raphaelgeissler.dependencychecker.Checker <em>Checker</em>}'.
@@ -334,17 +277,6 @@ public interface DependencycheckerPackage extends EPackage {
 	EAttribute getComponentDescription_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.raphaelgeissler.dependencychecker.ComponentDescription#getDependencies <em>Dependencies</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Dependencies</em>'.
-	 * @see de.raphaelgeissler.dependencychecker.ComponentDescription#getDependencies()
-	 * @see #getComponentDescription()
-	 * @generated
-	 */
-	EReference getComponentDescription_Dependencies();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link de.raphaelgeissler.dependencychecker.ComponentDescription#getComponentItems <em>Component Items</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -356,36 +288,15 @@ public interface DependencycheckerPackage extends EPackage {
 	EReference getComponentDescription_ComponentItems();
 
 	/**
-	 * Returns the meta object for class '{@link de.raphaelgeissler.dependencychecker.Dependencies <em>Dependencies</em>}'.
+	 * Returns the meta object for the attribute list '{@link de.raphaelgeissler.dependencychecker.ComponentDescription#getForbiddenComponents <em>Forbidden Components</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Dependencies</em>'.
-	 * @see de.raphaelgeissler.dependencychecker.Dependencies
+	 * @return the meta object for the attribute list '<em>Forbidden Components</em>'.
+	 * @see de.raphaelgeissler.dependencychecker.ComponentDescription#getForbiddenComponents()
+	 * @see #getComponentDescription()
 	 * @generated
 	 */
-	EClass getDependencies();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.raphaelgeissler.dependencychecker.Dependencies#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see de.raphaelgeissler.dependencychecker.Dependencies#getType()
-	 * @see #getDependencies()
-	 * @generated
-	 */
-	EAttribute getDependencies_Type();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link de.raphaelgeissler.dependencychecker.Dependencies#getComponents <em>Components</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Components</em>'.
-	 * @see de.raphaelgeissler.dependencychecker.Dependencies#getComponents()
-	 * @see #getDependencies()
-	 * @generated
-	 */
-	EAttribute getDependencies_Components();
+	EAttribute getComponentDescription_ForbiddenComponents();
 
 	/**
 	 * Returns the meta object for class '{@link de.raphaelgeissler.dependencychecker.ComponentItemDescription <em>Component Item Description</em>}'.
@@ -439,16 +350,6 @@ public interface DependencycheckerPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getMatchType();
-
-	/**
-	 * Returns the meta object for enum '{@link de.raphaelgeissler.dependencychecker.SelectionType <em>Selection Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Selection Type</em>'.
-	 * @see de.raphaelgeissler.dependencychecker.SelectionType
-	 * @generated
-	 */
-	EEnum getSelectionType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -518,14 +419,6 @@ public interface DependencycheckerPackage extends EPackage {
 		EAttribute COMPONENT_DESCRIPTION__NAME = eINSTANCE.getComponentDescription_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Dependencies</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPONENT_DESCRIPTION__DEPENDENCIES = eINSTANCE.getComponentDescription_Dependencies();
-
-		/**
 		 * The meta object literal for the '<em><b>Component Items</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -534,30 +427,12 @@ public interface DependencycheckerPackage extends EPackage {
 		EReference COMPONENT_DESCRIPTION__COMPONENT_ITEMS = eINSTANCE.getComponentDescription_ComponentItems();
 
 		/**
-		 * The meta object literal for the '{@link de.raphaelgeissler.dependencychecker.impl.DependenciesImpl <em>Dependencies</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.raphaelgeissler.dependencychecker.impl.DependenciesImpl
-		 * @see de.raphaelgeissler.dependencychecker.impl.DependencycheckerPackageImpl#getDependencies()
-		 * @generated
-		 */
-		EClass DEPENDENCIES = eINSTANCE.getDependencies();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Forbidden Components</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DEPENDENCIES__TYPE = eINSTANCE.getDependencies_Type();
-
-		/**
-		 * The meta object literal for the '<em><b>Components</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DEPENDENCIES__COMPONENTS = eINSTANCE.getDependencies_Components();
+		EAttribute COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS = eINSTANCE.getComponentDescription_ForbiddenComponents();
 
 		/**
 		 * The meta object literal for the '{@link de.raphaelgeissler.dependencychecker.impl.ComponentItemDescriptionImpl <em>Component Item Description</em>}' class.
@@ -602,16 +477,6 @@ public interface DependencycheckerPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum MATCH_TYPE = eINSTANCE.getMatchType();
-
-		/**
-		 * The meta object literal for the '{@link de.raphaelgeissler.dependencychecker.SelectionType <em>Selection Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.raphaelgeissler.dependencychecker.SelectionType
-		 * @see de.raphaelgeissler.dependencychecker.impl.DependencycheckerPackageImpl#getSelectionType()
-		 * @generated
-		 */
-		EEnum SELECTION_TYPE = eINSTANCE.getSelectionType();
 
 	}
 

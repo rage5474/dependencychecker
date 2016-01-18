@@ -5,11 +5,9 @@ package de.raphaelgeissler.dependencychecker.impl;
 import de.raphaelgeissler.dependencychecker.Checker;
 import de.raphaelgeissler.dependencychecker.ComponentDescription;
 import de.raphaelgeissler.dependencychecker.ComponentItemDescription;
-import de.raphaelgeissler.dependencychecker.Dependencies;
 import de.raphaelgeissler.dependencychecker.DependencycheckerFactory;
 import de.raphaelgeissler.dependencychecker.DependencycheckerPackage;
 import de.raphaelgeissler.dependencychecker.MatchType;
-import de.raphaelgeissler.dependencychecker.SelectionType;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -44,13 +42,6 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dependenciesEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass componentItemDescriptionEClass = null;
 
 	/**
@@ -59,13 +50,6 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 	 * @generated
 	 */
 	private EEnum matchTypeEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum selectionTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -178,7 +162,7 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponentDescription_Dependencies() {
+	public EReference getComponentDescription_ComponentItems() {
 		return (EReference)componentDescriptionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -187,35 +171,8 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponentDescription_ComponentItems() {
-		return (EReference)componentDescriptionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDependencies() {
-		return dependenciesEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDependencies_Type() {
-		return (EAttribute)dependenciesEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDependencies_Components() {
-		return (EAttribute)dependenciesEClass.getEStructuralFeatures().get(1);
+	public EAttribute getComponentDescription_ForbiddenComponents() {
+		return (EAttribute)componentDescriptionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -268,15 +225,6 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getSelectionType() {
-		return selectionTypeEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public DependencycheckerFactory getDependencycheckerFactory() {
 		return (DependencycheckerFactory)getEFactoryInstance();
 	}
@@ -306,12 +254,8 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 
 		componentDescriptionEClass = createEClass(COMPONENT_DESCRIPTION);
 		createEAttribute(componentDescriptionEClass, COMPONENT_DESCRIPTION__NAME);
-		createEReference(componentDescriptionEClass, COMPONENT_DESCRIPTION__DEPENDENCIES);
 		createEReference(componentDescriptionEClass, COMPONENT_DESCRIPTION__COMPONENT_ITEMS);
-
-		dependenciesEClass = createEClass(DEPENDENCIES);
-		createEAttribute(dependenciesEClass, DEPENDENCIES__TYPE);
-		createEAttribute(dependenciesEClass, DEPENDENCIES__COMPONENTS);
+		createEAttribute(componentDescriptionEClass, COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS);
 
 		componentItemDescriptionEClass = createEClass(COMPONENT_ITEM_DESCRIPTION);
 		createEAttribute(componentItemDescriptionEClass, COMPONENT_ITEM_DESCRIPTION__NAME);
@@ -320,7 +264,6 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 
 		// Create enums
 		matchTypeEEnum = createEEnum(MATCH_TYPE);
-		selectionTypeEEnum = createEEnum(SELECTION_TYPE);
 	}
 
 	/**
@@ -359,12 +302,8 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 
 		initEClass(componentDescriptionEClass, ComponentDescription.class, "ComponentDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentDescription_Name(), ecorePackage.getEString(), "name", null, 0, 1, ComponentDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComponentDescription_Dependencies(), this.getDependencies(), null, "dependencies", null, 0, 1, ComponentDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentDescription_ComponentItems(), this.getComponentItemDescription(), null, "componentItems", null, 0, -1, ComponentDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(dependenciesEClass, Dependencies.class, "Dependencies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDependencies_Type(), this.getSelectionType(), "type", null, 0, 1, Dependencies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDependencies_Components(), ecorePackage.getEString(), "components", null, 0, -1, Dependencies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentDescription_ForbiddenComponents(), ecorePackage.getEString(), "forbiddenComponents", null, 0, -1, ComponentDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentItemDescriptionEClass, ComponentItemDescription.class, "ComponentItemDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentItemDescription_Name(), ecorePackage.getEString(), "name", null, 0, 1, ComponentItemDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -376,10 +315,6 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 		addEEnumLiteral(matchTypeEEnum, MatchType.STARTSWITH);
 		addEEnumLiteral(matchTypeEEnum, MatchType.EQUALS);
 		addEEnumLiteral(matchTypeEEnum, MatchType.REGEX);
-
-		initEEnum(selectionTypeEEnum, SelectionType.class, "SelectionType");
-		addEEnumLiteral(selectionTypeEEnum, SelectionType.EXCLUDE);
-		addEEnumLiteral(selectionTypeEEnum, SelectionType.INCLUDE);
 
 		// Create resource
 		createResource(eNS_URI);

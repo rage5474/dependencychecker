@@ -43,53 +43,40 @@ public class DependencyValidatorImpl implements DependencyValidator {
 		ComponentDescription group = foundComponentOfPlugin(pluginToValidate, checkerConfig);
 
 		if (group != null) {
-			if (group.getDependencies().getType() == SelectionType.EXCLUDE) {
 				
 				boolean result = true;
-				for(String nextDependencyGroup : group.getDependencies().getComponents())
+				for(String notAllowedGroup : group.getForbiddenComponents())
 				{
-//					Group notAllowedGroup = foundGroupOfPlugin(nextDependencyGroup, checkerConfig);
-					ComponentDescription notAllowedGroup = getComponentByName(nextDependencyGroup, checkerConfig);
 					if(notAllowedGroup != null && !isDependencyAllowed(dependentPlugin, notAllowedGroup))
 						result &= false;
 				}
 				
 				return result;
-			} else if (group.getDependencies().getType() == SelectionType.INCLUDE) {
-				throw new UnsupportedOperationException("SelectionType INCLUDE not implemented yet.");
-			} else {
-				throw new IllegalArgumentException(
-						"SelectionType " + group.getDependencies().getType().toString() + " not supported.");
-			}
 
 		}
 
 		return true;
 	}
 
-	private ComponentDescription getComponentByName(String nextDependencyGroup, Checker checkerConfig) {
-		for(ComponentDescription nextComponent : checkerConfig.getComponentDefinitions())
+
+	private boolean isDependencyAllowed(String dependentPlugin, String notAllowedGroup) {
+		ComponentDescription notAllowdComponent = getComponentByName(notAllowedGroup);
+		if(notAllowdComponent != null)
 		{
-			if(nextComponent.getName().equals(nextDependencyGroup))
-				return nextComponent;
+			if(isPluginInComponent(dependentPlugin, notAllowdComponent))
+				return false;
 		}
-		return null;
+		
+		return true;
 	}
 
-	private boolean isDependencyAllowed(String dependentPlugin, ComponentDescription notAllowedGroup) {
-		boolean result = true;
-		for (ComponentItemDescription nextNotAllowedEntry : notAllowedGroup.getComponentItems()) {
-			if(nextNotAllowedEntry.getMatchType() == MatchType.STARTSWITH)
-			{
-				if (dependentPlugin.startsWith(nextNotAllowedEntry.getValue()))
-					result &= false;
-			}
-			else
-			{
-				throw new UnsupportedOperationException("MatchType " + nextNotAllowedEntry.getMatchType() + " not implemented.");
-			}
+	private ComponentDescription getComponentByName(String notAllowedGroup) {
+		for(ComponentDescription nextComponentDescription : checkerConfig.getChecker().getComponentDefinitions())
+		{
+			if(nextComponentDescription.getName().equals(notAllowedGroup))
+				return nextComponentDescription;
 		}
-		return result;
+		return null;
 	}
 
 	private ComponentDescription foundComponentOfPlugin(String pluginToValidate, Checker checkerConfig) {
@@ -101,7 +88,7 @@ public class DependencyValidatorImpl implements DependencyValidator {
 
 		return null;
 	}
-
+	
 	private boolean isPluginInComponent(String pluginToValidate, ComponentDescription group) {
 		for (ComponentItemDescription nextComponentItem : group.getComponentItems()) {
 			if (nextComponentItem.getMatchType() == MatchType.STARTSWITH) {

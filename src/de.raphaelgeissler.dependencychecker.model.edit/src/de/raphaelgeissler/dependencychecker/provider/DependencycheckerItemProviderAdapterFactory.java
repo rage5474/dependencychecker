@@ -118,29 +118,6 @@ public class DependencycheckerItemProviderAdapterFactory extends Dependencycheck
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.raphaelgeissler.dependencychecker.Dependencies} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DependenciesItemProvider dependenciesItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.raphaelgeissler.dependencychecker.Dependencies}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDependenciesAdapter() {
-		if (dependenciesItemProvider == null) {
-			dependenciesItemProvider = new DependenciesItemProvider(this);
-		}
-
-		return dependenciesItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link de.raphaelgeissler.dependencychecker.ComponentItemDescription} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -264,7 +241,6 @@ public class DependencycheckerItemProviderAdapterFactory extends Dependencycheck
 	public void dispose() {
 		if (checkerItemProvider != null) checkerItemProvider.dispose();
 		if (componentDescriptionItemProvider != null) componentDescriptionItemProvider.dispose();
-		if (dependenciesItemProvider != null) dependenciesItemProvider.dispose();
 		if (componentItemDescriptionItemProvider != null) componentItemDescriptionItemProvider.dispose();
 	}
 

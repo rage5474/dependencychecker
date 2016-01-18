@@ -59,7 +59,6 @@ public class DependencycheckerFactoryImpl extends EFactoryImpl implements Depend
 		switch (eClass.getClassifierID()) {
 			case DependencycheckerPackage.CHECKER: return createChecker();
 			case DependencycheckerPackage.COMPONENT_DESCRIPTION: return createComponentDescription();
-			case DependencycheckerPackage.DEPENDENCIES: return createDependencies();
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION: return createComponentItemDescription();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -76,8 +75,6 @@ public class DependencycheckerFactoryImpl extends EFactoryImpl implements Depend
 		switch (eDataType.getClassifierID()) {
 			case DependencycheckerPackage.MATCH_TYPE:
 				return createMatchTypeFromString(eDataType, initialValue);
-			case DependencycheckerPackage.SELECTION_TYPE:
-				return createSelectionTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -93,8 +90,6 @@ public class DependencycheckerFactoryImpl extends EFactoryImpl implements Depend
 		switch (eDataType.getClassifierID()) {
 			case DependencycheckerPackage.MATCH_TYPE:
 				return convertMatchTypeToString(eDataType, instanceValue);
-			case DependencycheckerPackage.SELECTION_TYPE:
-				return convertSelectionTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -125,16 +120,6 @@ public class DependencycheckerFactoryImpl extends EFactoryImpl implements Depend
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Dependencies createDependencies() {
-		DependenciesImpl dependencies = new DependenciesImpl();
-		return dependencies;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ComponentItemDescription createComponentItemDescription() {
 		ComponentItemDescriptionImpl componentItemDescription = new ComponentItemDescriptionImpl();
 		return componentItemDescription;
@@ -157,26 +142,6 @@ public class DependencycheckerFactoryImpl extends EFactoryImpl implements Depend
 	 * @generated
 	 */
 	public String convertMatchTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SelectionType createSelectionTypeFromString(EDataType eDataType, String initialValue) {
-		SelectionType result = SelectionType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertSelectionTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

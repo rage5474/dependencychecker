@@ -40,15 +40,6 @@ public interface DependencycheckerFactory extends EFactory {
 	ComponentDescription createComponentDescription();
 
 	/**
-	 * Returns a new object of class '<em>Dependencies</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Dependencies</em>'.
-	 * @generated
-	 */
-	Dependencies createDependencies();
-
-	/**
 	 * Returns a new object of class '<em>Component Item Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

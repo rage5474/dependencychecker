@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: de.raphaegeissler.cdsl.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: de.raphaegeissler.cdsl.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: de.raphaegeissler.cdsl,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: de.raphaegeissler.cdsl.ide.contentassist.antlr.internal,
+ de.raphaegeissler.cdsl.ide.contentassist.antlr
+

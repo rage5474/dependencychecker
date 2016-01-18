@@ -64,8 +64,8 @@ public class ComponentDescriptionItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addDependenciesPropertyDescriptor(object);
 			addComponentItemsPropertyDescriptor(object);
+			addForbiddenComponentsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -93,28 +93,6 @@ public class ComponentDescriptionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Dependencies feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDependenciesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ComponentDescription_dependencies_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentDescription_dependencies_feature", "_UI_ComponentDescription_type"),
-				 DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__DEPENDENCIES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Component Items feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -137,6 +115,28 @@ public class ComponentDescriptionItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Forbidden Components feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addForbiddenComponentsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ComponentDescription_forbiddenComponents_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentDescription_forbiddenComponents_feature", "_UI_ComponentDescription_type"),
+				 DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -148,7 +148,6 @@ public class ComponentDescriptionItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__DEPENDENCIES);
 			childrenFeatures.add(DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__COMPONENT_ITEMS);
 		}
 		return childrenFeatures;
@@ -206,9 +205,9 @@ public class ComponentDescriptionItemProvider
 
 		switch (notification.getFeatureID(ComponentDescription.class)) {
 			case DependencycheckerPackage.COMPONENT_DESCRIPTION__NAME:
+			case DependencycheckerPackage.COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case DependencycheckerPackage.COMPONENT_DESCRIPTION__DEPENDENCIES:
 			case DependencycheckerPackage.COMPONENT_DESCRIPTION__COMPONENT_ITEMS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -226,11 +225,6 @@ public class ComponentDescriptionItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__DEPENDENCIES,
-				 DependencycheckerFactory.eINSTANCE.createDependencies()));
 
 		newChildDescriptors.add
 			(createChildParameter

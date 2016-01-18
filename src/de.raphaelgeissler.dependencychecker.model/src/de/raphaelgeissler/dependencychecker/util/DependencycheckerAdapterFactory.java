@@ -76,10 +76,6 @@ public class DependencycheckerAdapterFactory extends AdapterFactoryImpl {
 				return createComponentDescriptionAdapter();
 			}
 			@Override
-			public Adapter caseDependencies(Dependencies object) {
-				return createDependenciesAdapter();
-			}
-			@Override
 			public Adapter caseComponentItemDescription(ComponentItemDescription object) {
 				return createComponentItemDescriptionAdapter();
 			}
@@ -128,20 +124,6 @@ public class DependencycheckerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComponentDescriptionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.raphaelgeissler.dependencychecker.Dependencies <em>Dependencies</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.raphaelgeissler.dependencychecker.Dependencies
-	 * @generated
-	 */
-	public Adapter createDependenciesAdapter() {
 		return null;
 	}
 
