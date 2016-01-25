@@ -13,15 +13,5 @@
             class="de.raphaelgeissler.dependencychecker.DependencycheckerPackage"
             genModel="model/dependencychecker.genmodel"/>
    </extension>
-
-
-<extension  point="org.eclipse.emf.ecp.view.model.provider.xmi.file">
-<file filePath="model/ComponentDescription.view"/>
-
-<file filePath="model/ComponentItemDescription.view"/>
-
-<file filePath="model/ComponentDescription.view"/>
-
-<file filePath="model/Checker.view"/>
-</extension>
+   
 </plugin>
