@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtend.lib,
  org.eclipse.emf.common,
  org.eclipse.xtext.xbase.lib,
- de.raphaelgeissler.dependencychecker.model;bundle-version="1.0.0"
+ de.raphaelgeissler.dependencychecker.model
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: de.raphaegeissler.cdsl.cDSL.impl,
  de.raphaegeissler.cdsl,
