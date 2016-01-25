@@ -5,6 +5,7 @@
 		<groupId>de.raphaegeissler.cdsl</groupId>
 		<artifactId>de.raphaegeissler.cdsl.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../de.raphaegeissler.cdsl.parent</relativePath>
 	</parent>
 	<artifactId>de.raphaegeissler.cdsl.ide</artifactId>
 	<packaging>eclipse-plugin</packaging>

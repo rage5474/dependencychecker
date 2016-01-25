@@ -5,19 +5,19 @@
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>de.raphaegeissler</groupId>
+		<groupId>de.raphaegeissler.cdsl</groupId>
 		<artifactId>de.raphaegeissler.cdsl.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../de.raphaegeissler.cdsl.parent</relativePath>
+		<relativePath>../../de.raphaegeissler.cdsl.parent</relativePath>
 	</parent>
 
 	<modules>
-		<module>de.raphaegeissler.cdsl</module>
-		<module>de.raphaegeissler.cdsl.ide</module>
-		<module>de.raphaegeissler.cdsl.ui</module>
-		<module>de.raphaegeissler.cdsl.target</module>
-		<module>de.raphaegeissler.cdsl.tests</module>
-		<module>de.raphaegeissler.cdsl.ui.tests</module>
+		<module>../../de.raphaegeissler.cdsl</module>
+		<module>../../de.raphaegeissler.cdsl.ide</module>
+		<module>../../de.raphaegeissler.cdsl.ui</module>
+		<module>../../de.raphaegeissler.cdsl.target</module>
+		<module>../../de.raphaegeissler.cdsl.tests</module>
+		<module>../../de.raphaegeissler.cdsl.ui.tests</module>
 	</modules>
 	<version>1.0.0</version>
 </project> 
