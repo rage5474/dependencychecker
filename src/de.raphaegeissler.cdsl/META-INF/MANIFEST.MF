@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: de.raphaegeissler.cdsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: de.raphaegeissler.cdsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.util,
+ org.antlr.runtime,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common,
+ org.eclipse.xtext.xbase.lib,
+ de.raphaelgeissler.dependencychecker.model
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: de.raphaegeissler.cdsl.cDSL.impl,
+ de.raphaegeissler.cdsl,
+ de.raphaegeissler.cdsl.parser.antlr,
+ de.raphaegeissler.cdsl.generator,
+ de.raphaegeissler.cdsl.validation,
+ de.raphaegeissler.cdsl.parser.antlr.internal,
+ de.raphaegeissler.cdsl.cDSL,
+ de.raphaegeissler.cdsl.serializer,
+ de.raphaegeissler.cdsl.scoping,
+ de.raphaegeissler.cdsl.services,
+ de.raphaegeissler.cdsl.cDSL.util
+Import-Package: org.apache.log4j
