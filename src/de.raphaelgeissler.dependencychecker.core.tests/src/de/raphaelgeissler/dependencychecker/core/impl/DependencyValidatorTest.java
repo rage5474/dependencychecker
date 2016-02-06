@@ -31,9 +31,10 @@ public class DependencyValidatorTest {
 		
 		DependencyValidationResult result = dependencyValidator.validate();
 		assertFalse(result.wasSuccessful());
-		assertTrue(result.getResultMessages().size() == 1);
-		assertEquals("de.raphaelgeissler.example.ui", result.getResultMessages().get(0).getPluginId());
-		assertEquals("de.raphaelgeissler.example.model", result.getResultMessages().get(0).getDependencyPluginId());
-		assertEquals(7, result.getResultMessages().get(0).getLineNumber());
+		assertTrue(result.getResultMessages().size() == 3);
+		assertEquals("de.raphaelgeissler.example.ui", result.getResultMessages().get(2).getPluginId());
+		assertEquals("de.raphaelgeissler.example.model", result.getResultMessages().get(2).getDependencyPluginId());
+		assertEquals(7, result.getResultMessages().get(2).getLineNumber());
+		assertFalse(result.getResultMessages().get(2).correct());
 	}
 }

@@ -15,12 +15,15 @@
   	<module>../de.raphaelgeissler.dependencychecker.core</module>
     <module>../de.raphaelgeissler.dependencychecker.core.tests</module>
     <module>../de.raphaelgeissler.dependencychecker.feature</module>
+    <module>../de.raphaelgeissler.dependencychecker.core.feature</module>
     <module>../de.raphaelgeissler.dependencychecker.model</module>
     <module>../de.raphaelgeissler.dependencychecker.model.edit</module>
     <module>../de.raphaelgeissler.dependencychecker.model.editor</module>
  	<module>../de.raphaelgeissler.dependencychecker.tycho.updatesite</module>
  	<module>../de.raphaelgeissler.dependencychecker.ui.builder</module>
     <module>../de.raphaelgeissler.dependencychecker.ui.ecl</module>
+    <module>../de.raphaelgeissler.dependencychecker.ui.console</module>
+    <module>../de.raphaelgeissler.dependencychecker.ui.console.feature</module>
   </modules>
 <version>1.0.0</version>
 </project> 
