@@ -66,7 +66,7 @@ public class DependencyCheckerBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
-	protected IProject[] build(int kind, Map args, IProgressMonitor monitor) throws CoreException {
+	protected IProject[] build(int kind, @SuppressWarnings("rawtypes") Map args, IProgressMonitor monitor) throws CoreException {
 		if (kind == FULL_BUILD) {
 			fullBuild(monitor);
 		} else {
@@ -102,7 +102,8 @@ public class DependencyCheckerBuilder extends IncrementalProjectBuilder {
 			{
 				for(DependencyValidationResultMessage nextMessage : result.getResultMessages())
 				{
-					DependencyCheckerBuilder.this.addMarker(file, "Dependency " + nextMessage.getWrongDependency() + " not allowed.", nextMessage.getLineNumber(), IMarker.SEVERITY_WARNING);
+					if(!nextMessage.correct())
+						DependencyCheckerBuilder.this.addMarker(file, "Dependency " + nextMessage.getDependencyPluginId() + " not allowed.", nextMessage.getLineNumber(), IMarker.SEVERITY_WARNING);
 				}
 			}
 

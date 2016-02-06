@@ -4,8 +4,10 @@ public interface DependencyValidationResultMessage {
 
 	public String getPluginId();
 	
-	public String getWrongDependency();
+	public String getDependencyPluginId();
 
 	public int getLineNumber();
+	
+	public boolean correct();
 
 }

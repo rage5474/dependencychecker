@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="DependencyChecker" id="de.raphaelgeissler.dependencychecker.ui.console.console" application="de.raphaelgeissler.dependencychecker.ui.console.application" useFeatures="true" includeLaunchers="true">
+
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-application de.raphaelgeissler.dependencychecker.ui.console.application -consoleLog
+      </programArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+
+   <launcher name="dvalidator-console">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
+
+   <plugins>
+      <plugin id="de.raphaelgeissler.dependencychecker.core"/>
+      <plugin id="de.raphaelgeissler.dependencychecker.core.tests" fragment="true"/>
+      <plugin id="de.raphaelgeissler.dependencychecker.model"/>
+      <plugin id="de.raphaelgeissler.dependencychecker.ui.console"/>
+      <plugin id="javax.xml"/>
+      <plugin id="org.eclipse.core.contenttype"/>
+      <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
+      <plugin id="org.eclipse.emf.cdo.ecore.retrofit" fragment="true"/>
+      <plugin id="org.eclipse.emf.common"/>
+      <plugin id="org.eclipse.emf.ecore"/>
+      <plugin id="org.eclipse.emf.ecore.xmi"/>
+      <plugin id="org.eclipse.equinox.app"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.registry"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
+      <plugin id="org.hamcrest.core"/>
+      <plugin id="org.junit"/>
+   </plugins>
+
+   <features>
+      <feature id="de.raphaelgeissler.dependencychecker.core.feature" version="1.0.0.qualifier"/>
+      <feature id="org.eclipse.emf.ecore" version="2.11.1.v20150805-0538"/>
+      <feature id="org.eclipse.emf.common" version="2.11.0.v20150805-0538"/>
+      <feature id="org.eclipse.e4.rcp" version="1.4.0.v20150903-1804"/>
+      <feature id="de.raphaelgeissler.dependencychecker.ui.console.feature" version="1.0.0.qualifier"/>
+   </features>
+
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
+</product>

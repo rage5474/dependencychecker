@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="de.raphaelgeissler.dependencychecker.ui.console.DependencyCheckerConsole">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="console"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="de.raphaelgeissler.dependencychecker.ui.console.application"
+            name="DependencyChecker">
+         <property
+               name="appName"
+               value="DependencyChecker">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

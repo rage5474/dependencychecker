@@ -2,7 +2,6 @@ package de.raphaelgeissler.dependencychecker.ui.ecl;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.commands.AbstractHandler;

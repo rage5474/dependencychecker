@@ -24,12 +24,12 @@ public class DependencyValidationResultImpl implements DependencyValidationResul
 		return successful;
 	}
 
-	public void addResultMessage(final String bundleID, final String dependentPlugin, final int lineNumber)
+	public void addResultMessage(final String bundleID, final String dependentPlugin, final int lineNumber, final boolean correct)
 	{
 		resultMessages.add(new DependencyValidationResultMessage() {
 			
 			@Override
-			public String getWrongDependency() {
+			public String getDependencyPluginId() {
 				return dependentPlugin;
 			}
 			
@@ -41,6 +41,11 @@ public class DependencyValidationResultImpl implements DependencyValidationResul
 			@Override
 			public String getPluginId() {
 				return bundleID;
+			}
+
+			@Override
+			public boolean correct() {
+				return correct;
 			}
 		});
 	}

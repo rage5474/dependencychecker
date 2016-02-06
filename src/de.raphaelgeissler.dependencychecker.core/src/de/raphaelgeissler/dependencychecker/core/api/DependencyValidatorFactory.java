@@ -26,7 +26,7 @@ public class DependencyValidatorFactory {
 			}
 		}
 		else {
-			throw new IllegalArgumentException("Couldn't load DependencyCheckerConfig file.");
+			throw new IllegalArgumentException("Couldn't load DependencyCheckerConfig file " + pathToCheckerConfig + ".");
 		}
 		
 		return dependencyValidator;
