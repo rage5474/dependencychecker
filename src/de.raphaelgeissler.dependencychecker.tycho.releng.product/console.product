@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="DependencyChecker" id="de.raphaelgeissler.dependencychecker.ui.console.console" application="de.raphaelgeissler.dependencychecker.ui.console.application" useFeatures="true" includeLaunchers="true">
+<product name="DependencyChecker" uid="de.raphaelgeissler.dependencychecker.tycho.releng.product" id="de.raphaelgeissler.dependencychecker.ui.console.console" application="de.raphaelgeissler.dependencychecker.ui.console.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
 
 
    <configIni use="default">
@@ -27,7 +27,6 @@
 
    <vm>
    </vm>
-
 
    <plugins>
       <plugin id="de.raphaelgeissler.dependencychecker.core"/>
@@ -61,6 +60,13 @@
       <feature id="de.raphaelgeissler.dependencychecker.ui.console.feature" version="1.0.0.qualifier"/>
    </features>
 
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+   </configurations>
 
    <preferencesInfo>
       <targetfile overwrite="false"/>
