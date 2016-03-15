@@ -189,7 +189,7 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComponentItemDescription_Value() {
+	public EAttribute getComponentItemDescription_Id() {
 		return (EAttribute)componentItemDescriptionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -249,7 +249,7 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 		createEAttribute(componentDescriptionEClass, COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS);
 
 		componentItemDescriptionEClass = createEClass(COMPONENT_ITEM_DESCRIPTION);
-		createEAttribute(componentItemDescriptionEClass, COMPONENT_ITEM_DESCRIPTION__VALUE);
+		createEAttribute(componentItemDescriptionEClass, COMPONENT_ITEM_DESCRIPTION__ID);
 		createEAttribute(componentItemDescriptionEClass, COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE);
 
 		// Create enums
@@ -296,7 +296,7 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 		initEAttribute(getComponentDescription_ForbiddenComponents(), ecorePackage.getEString(), "forbiddenComponents", null, 0, -1, ComponentDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentItemDescriptionEClass, ComponentItemDescription.class, "ComponentItemDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComponentItemDescription_Value(), ecorePackage.getEString(), "value", null, 0, 1, ComponentItemDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentItemDescription_Id(), ecorePackage.getEString(), "id", null, 0, 1, ComponentItemDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentItemDescription_MatchType(), this.getMatchType(), "matchType", "WILDCARD", 0, 1, ComponentItemDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals

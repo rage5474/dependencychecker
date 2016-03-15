@@ -23,7 +23,7 @@
     <eLiterals name="REGEX" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentItemDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="matchType" eType="#//MatchType"
         defaultValueLiteral="WILDCARD"/>
   </eClassifiers>

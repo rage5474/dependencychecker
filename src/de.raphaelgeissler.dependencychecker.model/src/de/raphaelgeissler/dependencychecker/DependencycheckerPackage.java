@@ -169,13 +169,13 @@ public interface DependencycheckerPackage extends EPackage {
 	int COMPONENT_ITEM_DESCRIPTION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_ITEM_DESCRIPTION__VALUE = 0;
+	int COMPONENT_ITEM_DESCRIPTION__ID = 0;
 
 	/**
 	 * The feature id for the '<em><b>Match Type</b></em>' attribute.
@@ -300,15 +300,15 @@ public interface DependencycheckerPackage extends EPackage {
 	EClass getComponentItemDescription();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.raphaelgeissler.dependencychecker.ComponentItemDescription#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link de.raphaelgeissler.dependencychecker.ComponentItemDescription#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.raphaelgeissler.dependencychecker.ComponentItemDescription#getValue()
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see de.raphaelgeissler.dependencychecker.ComponentItemDescription#getId()
 	 * @see #getComponentItemDescription()
 	 * @generated
 	 */
-	EAttribute getComponentItemDescription_Value();
+	EAttribute getComponentItemDescription_Id();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.raphaelgeissler.dependencychecker.ComponentItemDescription#getMatchType <em>Match Type</em>}'.
@@ -425,12 +425,12 @@ public interface DependencycheckerPackage extends EPackage {
 		EClass COMPONENT_ITEM_DESCRIPTION = eINSTANCE.getComponentItemDescription();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMPONENT_ITEM_DESCRIPTION__VALUE = eINSTANCE.getComponentItemDescription_Value();
+		EAttribute COMPONENT_ITEM_DESCRIPTION__ID = eINSTANCE.getComponentItemDescription_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Match Type</b></em>' attribute feature.

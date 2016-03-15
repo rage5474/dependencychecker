@@ -60,26 +60,26 @@ public class ComponentItemDescriptionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 			addMatchTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ComponentItemDescription_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentItemDescription_value_feature", "_UI_ComponentItemDescription_type"),
-				 DependencycheckerPackage.Literals.COMPONENT_ITEM_DESCRIPTION__VALUE,
+				 getString("_UI_ComponentItemDescription_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentItemDescription_id_feature", "_UI_ComponentItemDescription_type"),
+				 DependencycheckerPackage.Literals.COMPONENT_ITEM_DESCRIPTION__ID,
 				 true,
 				 false,
 				 false,
@@ -129,7 +129,7 @@ public class ComponentItemDescriptionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ComponentItemDescription)object).getValue();
+		String label = ((ComponentItemDescription)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ComponentItemDescription_type") :
 			getString("_UI_ComponentItemDescription_type") + " " + label;
@@ -148,7 +148,7 @@ public class ComponentItemDescriptionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ComponentItemDescription.class)) {
-			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE:
+			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__ID:
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

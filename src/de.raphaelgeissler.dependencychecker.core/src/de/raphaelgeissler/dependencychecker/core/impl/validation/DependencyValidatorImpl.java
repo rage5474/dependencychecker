@@ -72,7 +72,7 @@ public class DependencyValidatorImpl implements DependencyValidator {
 	
 	private boolean isPluginInComponent(String pluginToValidate, ComponentDescription group) {
 		for (ComponentItemDescription nextComponentItem : group.getComponentItems()) {
-			String value = nextComponentItem.getValue();
+			String value = nextComponentItem.getId();
 			return WildCardMatcher.isMatching(pluginToValidate, value);
 		}
 		return false;

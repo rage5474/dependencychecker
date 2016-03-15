@@ -75,7 +75,7 @@ class CDSLGenerator extends AbstractGenerator {
 	def createCompItemDescFromUnit(String nextUnit) {
 		val compItemDesc = DependencycheckerFactory.eINSTANCE.createComponentItemDescription
 
-		compItemDesc.value = nextUnit
+		compItemDesc.id = nextUnit
 		compItemDesc
 	}
 

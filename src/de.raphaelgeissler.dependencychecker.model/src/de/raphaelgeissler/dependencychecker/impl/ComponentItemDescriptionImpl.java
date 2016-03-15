@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentItemDescriptionImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentItemDescriptionImpl#getId <em>Id</em>}</li>
  *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentItemDescriptionImpl#getMatchType <em>Match Type</em>}</li>
  * </ul>
  *
@@ -29,24 +29,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container implements ComponentItemDescription {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMatchType() <em>Match Type</em>}' attribute.
@@ -92,8 +92,8 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
-		return value;
+	public String getId() {
+		return id;
 	}
 
 	/**
@@ -101,11 +101,11 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__ID, oldId, id));
 	}
 
 	/**
@@ -137,8 +137,8 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE:
-				return getValue();
+			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__ID:
+				return getId();
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE:
 				return getMatchType();
 		}
@@ -153,8 +153,8 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE:
-				setValue((String)newValue);
+			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__ID:
+				setId((String)newValue);
 				return;
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE:
 				setMatchType((MatchType)newValue);
@@ -171,8 +171,8 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__ID:
+				setId(ID_EDEFAULT);
 				return;
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE:
 				setMatchType(MATCH_TYPE_EDEFAULT);
@@ -189,8 +189,8 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE:
 				return matchType != MATCH_TYPE_EDEFAULT;
 		}
@@ -207,8 +207,8 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (id: ");
+		result.append(id);
 		result.append(", matchType: ");
 		result.append(matchType);
 		result.append(')');

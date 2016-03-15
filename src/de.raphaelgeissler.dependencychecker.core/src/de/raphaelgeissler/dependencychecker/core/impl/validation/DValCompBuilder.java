@@ -15,7 +15,7 @@ public class DValCompBuilder {
 
 	public DValCompBuilder id(String id) {
 		ComponentItemDescription itemDescr = DependencycheckerFactory.eINSTANCE.createComponentItemDescription();
-		itemDescr.setValue(id);
+		itemDescr.setId(id);
 		compDesc.getComponentItems().add(itemDescr);
 		return this;
 	}

@@ -25,7 +25,7 @@ public class DValBuilderTest {
 	
 	@Test
 	public void checkerCompIdCorrect() throws Exception {
-		assertEquals("de.ragedev.core.*", checker.getComponentDefinitions().get(0).getComponentItems().get(0).getValue());
+		assertEquals("de.ragedev.core.*", checker.getComponentDefinitions().get(0).getComponentItems().get(0).getId());
 	}
 	
 	@Test
