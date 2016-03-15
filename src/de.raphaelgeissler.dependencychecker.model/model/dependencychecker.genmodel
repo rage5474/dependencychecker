@@ -8,8 +8,7 @@
   <genPackages prefix="Dependencychecker" basePackage="de.raphaelgeissler" disposableProviderFactory="true"
       ecorePackage="dependencychecker.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="dependencychecker.ecore#//MatchType">
-      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//MatchType/STARTSWITH"/>
-      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//MatchType/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//MatchType/WILDCARD"/>
       <genEnumLiterals ecoreEnumLiteral="dependencychecker.ecore#//MatchType/REGEX"/>
     </genEnums>
     <genClasses ecoreClass="dependencychecker.ecore#//Checker">

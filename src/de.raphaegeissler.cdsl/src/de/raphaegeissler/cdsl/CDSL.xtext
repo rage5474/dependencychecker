@@ -9,32 +9,46 @@ AbstractEntry:
 	DValidator | ComponentDescription;
 
 DValidator:
-	'dvalidator' valName=ID
+	'dval' valName=ID
 	'{'
-	'components : ' (refComponents+=[ComponentDescription])+ ';'
+	'comps' ':' (refComponents+=[ComponentDescription])+ ';'
 	'}'
 ;
 
 ComponentDescription:
-	'component' name=ID
+	'comp' name=ID
 	'{'
-	(units+=UnitElements)+
+	(ports=Ports)?
+	(units=UnitElements)
 	(notAllowedRef+=NotAllowedRef)*
 	'}';
 
+Ports:
+	'ports' ':' QualifiedNames ';';
+
+QualifiedNames:
+	(qualifiedNames+=QualifiedName)+
+;
+
 NotAllowedRef:
-	'not allowed components : ' (units+=[ComponentDescription])+ ';'
+	'forbidden' ':' (units+=[ComponentDescription])+ ';'
 ;
 
 UnitElements:
-	ByName | StartsWith;
+	(unit+=ComponentID)+ 
+;
 
-ByName:
-	'name : ' QualifiedName ';';
+ComponentID:
+	'idents' ':' (qualifiedNames+=QualifiedName)+ ';';
 
-StartsWith:
-	'startswith : ' QualifiedName ';';
+//QualifiedName:
+//  ID ('.' ID)*
+//;
 
 QualifiedName:
-  ID ('.' ID)*
+  XID ('.' XID)*
+;
+
+XID:
+	ID | '*'
 ;

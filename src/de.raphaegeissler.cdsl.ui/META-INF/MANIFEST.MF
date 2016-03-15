@@ -20,6 +20,6 @@ Require-Bundle: de.raphaegeissler.cdsl,
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: de.raphaegeissler.cdsl.ui.contentassist,
- de.raphaegeissler.cdsl.ui.internal,
- de.raphaegeissler.cdsl.ui.quickfix
+ de.raphaegeissler.cdsl.ui.quickfix,
+ de.raphaegeissler.cdsl.ui.internal
 Bundle-Activator: de.raphaegeissler.cdsl.ui.internal.CdslActivator

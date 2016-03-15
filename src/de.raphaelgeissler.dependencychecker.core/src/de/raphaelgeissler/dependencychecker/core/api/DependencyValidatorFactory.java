@@ -2,9 +2,9 @@ package de.raphaelgeissler.dependencychecker.core.api;
 
 import java.util.List;
 
-import de.raphaelgeissler.dependencychecker.core.impl.DependencyCheckerConfig;
-import de.raphaelgeissler.dependencychecker.core.impl.DependencyValidatorImpl;
-import de.raphaelgeissler.dependencychecker.core.impl.ManifestDataStore;
+import de.raphaelgeissler.dependencychecker.core.impl.manifest.ManifestDataStore;
+import de.raphaelgeissler.dependencychecker.core.impl.validation.DependencyCheckerConfig;
+import de.raphaelgeissler.dependencychecker.core.impl.validation.DependencyValidatorImpl;
 
 public class DependencyValidatorFactory {
 
@@ -18,7 +18,7 @@ public class DependencyValidatorFactory {
 			ManifestDataStore manifestDataStore = new ManifestDataStore();
 			if(manifestDataStore.parseManifestFiles(pathToManifestFiles))
 			{
-				dependencyValidator = new DependencyValidatorImpl(config, manifestDataStore);
+				dependencyValidator = new DependencyValidatorImpl(config.getChecker(), manifestDataStore);
 			}
 			else
 			{

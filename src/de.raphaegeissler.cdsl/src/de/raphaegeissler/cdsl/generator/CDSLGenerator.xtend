@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import de.raphaegeissler.cdsl.cDSL.ComponentID
 
 /**
  * Generates code from your model files on save.
@@ -52,8 +53,13 @@ class CDSLGenerator extends AbstractGenerator {
 			val compDesc = DependencycheckerFactory.eINSTANCE.createComponentDescription
 			compDesc.name = nextRefComp.name
 
-			for (nextUnit : nextRefComp.units) {
-				compDesc.componentItems.add(createCompItemDescFromUnit(nextUnit))
+			for (nextUnit : nextRefComp.units.unit) {
+				for(q : nextUnit.qualifiedNames)
+				{
+					println(q)
+					compDesc.componentItems.add(createCompItemDescFromUnit(q))
+					
+				}
 			}
 
 			for (notAllowedRef : nextRefComp.notAllowedRef) {
@@ -71,8 +77,9 @@ class CDSLGenerator extends AbstractGenerator {
 	def createCompItemDescFromUnit(String nextUnit) {
 		val compItemDesc = DependencycheckerFactory.eINSTANCE.createComponentItemDescription
 
-		compItemDesc.matchType = nextUnit.matchType
-		compItemDesc.value = nextUnit.getUnitValue
+//		compItemDesc.matchType = nextUnit.matchType
+//		compItemDesc.value = nextUnit.getUnitValue
+		compItemDesc.value = nextUnit
 		compItemDesc
 	}
 

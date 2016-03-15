@@ -8,3 +8,5 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.11.1",
  de.raphaelgeissler.dependencychecker.model,
  org.eclipse.emf.ecore.xmi
 Export-Package: de.raphaelgeissler.dependencychecker.core.api
+Eclipse-ExtensibleAPI: true
+Bundle-ActivationPolicy: lazy

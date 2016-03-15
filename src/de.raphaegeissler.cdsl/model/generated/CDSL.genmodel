@@ -16,11 +16,22 @@
     </genClasses>
     <genClasses ecoreClass="CDSL.ecore#//ComponentDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CDSL.ecore#//ComponentDescription/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CDSL.ecore#//ComponentDescription/units"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CDSL.ecore#//ComponentDescription/ports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CDSL.ecore#//ComponentDescription/units"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CDSL.ecore#//ComponentDescription/notAllowedRef"/>
+    </genClasses>
+    <genClasses ecoreClass="CDSL.ecore#//Ports"/>
+    <genClasses ecoreClass="CDSL.ecore#//QualifiedNames">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CDSL.ecore#//QualifiedNames/qualifiedNames"/>
     </genClasses>
     <genClasses ecoreClass="CDSL.ecore#//NotAllowedRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CDSL.ecore#//NotAllowedRef/units"/>
+    </genClasses>
+    <genClasses ecoreClass="CDSL.ecore#//UnitElements">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CDSL.ecore#//UnitElements/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="CDSL.ecore#//ComponentID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CDSL.ecore#//ComponentID/qualifiedNames"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
