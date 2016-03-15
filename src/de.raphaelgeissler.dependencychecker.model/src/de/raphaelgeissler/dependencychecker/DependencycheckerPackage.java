@@ -169,22 +169,13 @@ public interface DependencycheckerPackage extends EPackage {
 	int COMPONENT_ITEM_DESCRIPTION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_ITEM_DESCRIPTION__NAME = 0;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_ITEM_DESCRIPTION__VALUE = 1;
+	int COMPONENT_ITEM_DESCRIPTION__VALUE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Match Type</b></em>' attribute.
@@ -193,7 +184,7 @@ public interface DependencycheckerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE = 2;
+	int COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE = 1;
 
 	/**
 	 * The number of structural features of the '<em>Component Item Description</em>' class.
@@ -202,7 +193,7 @@ public interface DependencycheckerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_ITEM_DESCRIPTION_FEATURE_COUNT = 3;
+	int COMPONENT_ITEM_DESCRIPTION_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Component Item Description</em>' class.
@@ -307,17 +298,6 @@ public interface DependencycheckerPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getComponentItemDescription();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.raphaelgeissler.dependencychecker.ComponentItemDescription#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.raphaelgeissler.dependencychecker.ComponentItemDescription#getName()
-	 * @see #getComponentItemDescription()
-	 * @generated
-	 */
-	EAttribute getComponentItemDescription_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.raphaelgeissler.dependencychecker.ComponentItemDescription#getValue <em>Value</em>}'.
@@ -443,14 +423,6 @@ public interface DependencycheckerPackage extends EPackage {
 		 * @generated
 		 */
 		EClass COMPONENT_ITEM_DESCRIPTION = eINSTANCE.getComponentItemDescription();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_ITEM_DESCRIPTION__NAME = eINSTANCE.getComponentItemDescription_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.

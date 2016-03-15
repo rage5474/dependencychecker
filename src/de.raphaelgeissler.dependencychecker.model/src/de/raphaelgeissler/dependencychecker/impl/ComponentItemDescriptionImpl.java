@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentItemDescriptionImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentItemDescriptionImpl#getValue <em>Value</em>}</li>
  *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentItemDescriptionImpl#getMatchType <em>Match Type</em>}</li>
  * </ul>
@@ -29,26 +28,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * @generated
  */
 public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container implements ComponentItemDescription {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -113,27 +92,6 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getValue() {
 		return value;
 	}
@@ -179,8 +137,6 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__NAME:
-				return getName();
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE:
 				return getValue();
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE:
@@ -197,9 +153,6 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__NAME:
-				setName((String)newValue);
-				return;
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE:
 				setValue((String)newValue);
 				return;
@@ -218,9 +171,6 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
@@ -239,8 +189,6 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case DependencycheckerPackage.COMPONENT_ITEM_DESCRIPTION__MATCH_TYPE:
@@ -259,9 +207,7 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", value: ");
+		result.append(" (value: ");
 		result.append(value);
 		result.append(", matchType: ");
 		result.append(matchType);

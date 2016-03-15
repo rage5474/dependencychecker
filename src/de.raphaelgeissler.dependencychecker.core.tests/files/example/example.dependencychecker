@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependencychecker:Checker xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:dependencychecker="http://www.example.org/dependencychecker">
   <componentDefinitions name="de.raphaelgeissler.example.core.component">
-    <componentItems name="de.raphaelgeissler.example.core.plugin" value="de.raphaelgeissler.example.core"/>
+    <componentItems value="de.raphaelgeissler.example.core"/>
     <forbiddenComponents>de.raphaelgeissler.example.ui.component</forbiddenComponents>
   </componentDefinitions>
   <componentDefinitions name="de.raphaelgeissler.example.model.component">
     <forbiddenComponents>de.raphaelgeissler.example.core.component de.raphaelgeissler.example.ui.component</forbiddenComponents>
-    <componentItems name="de.raphaelgeissler.example.core.plugin" value="de.raphaelgeissler.example.model"/>
+    <componentItems value="de.raphaelgeissler.example.model"/>
   </componentDefinitions>
   <componentDefinitions name="de.raphaelgeissler.example.ui.component">
     <forbiddenComponents>de.raphaelgeissler.example.model.component</forbiddenComponents>
-    <componentItems name="de.raphaelgeissler.example.ui.plugin" value="de.raphaelgeissler.example.ui"/>
+    <componentItems value="de.raphaelgeissler.example.ui"/>
   </componentDefinitions>
 </dependencychecker:Checker>

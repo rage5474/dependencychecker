@@ -21,7 +21,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentDescription/forbiddenComponents"/>
     </genClasses>
     <genClasses ecoreClass="dependencychecker.ecore#//ComponentItemDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentItemDescription/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentItemDescription/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentItemDescription/matchType"/>
     </genClasses>
