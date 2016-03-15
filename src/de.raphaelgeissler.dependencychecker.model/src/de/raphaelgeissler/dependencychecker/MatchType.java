@@ -19,26 +19,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum MatchType implements Enumerator {
 	/**
-	 * The '<em><b>STARTSWITH</b></em>' literal object.
+	 * The '<em><b>WILDCARD</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #STARTSWITH_VALUE
+	 * @see #WILDCARD_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	STARTSWITH(0, "STARTSWITH", "STARTSWITH"),
-
-	/**
-	 * The '<em><b>EQUALS</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #EQUALS_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	EQUALS(1, "EQUALS", "EQUALS"),
-
-	/**
+	WILDCARD(0, "WILDCARD", "WILDCARD"), /**
 	 * The '<em><b>REGEX</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,34 +37,19 @@ public enum MatchType implements Enumerator {
 	REGEX(2, "REGEX", "REGEX");
 
 	/**
-	 * The '<em><b>STARTSWITH</b></em>' literal value.
+	 * The '<em><b>WILDCARD</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>STARTSWITH</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>WILDCARD</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #STARTSWITH
+	 * @see #WILDCARD
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STARTSWITH_VALUE = 0;
-
-	/**
-	 * The '<em><b>EQUALS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>EQUALS</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #EQUALS
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int EQUALS_VALUE = 1;
+	public static final int WILDCARD_VALUE = 0;
 
 	/**
 	 * The '<em><b>REGEX</b></em>' literal value.
@@ -101,8 +74,7 @@ public enum MatchType implements Enumerator {
 	 */
 	private static final MatchType[] VALUES_ARRAY =
 		new MatchType[] {
-			STARTSWITH,
-			EQUALS,
+			WILDCARD,
 			REGEX,
 		};
 
@@ -160,8 +132,7 @@ public enum MatchType implements Enumerator {
 	 */
 	public static MatchType get(int value) {
 		switch (value) {
-			case STARTSWITH_VALUE: return STARTSWITH;
-			case EQUALS_VALUE: return EQUALS;
+			case WILDCARD_VALUE: return WILDCARD;
 			case REGEX_VALUE: return REGEX;
 		}
 		return null;

@@ -77,7 +77,7 @@ public interface ComponentItemDescription extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Match Type</b></em>' attribute.
-	 * The default value is <code>"STARTSWITH"</code>.
+	 * The default value is <code>"WILDCARD"</code>.
 	 * The literals are from the enumeration {@link de.raphaelgeissler.dependencychecker.MatchType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -89,7 +89,7 @@ public interface ComponentItemDescription extends EObject {
 	 * @see de.raphaelgeissler.dependencychecker.MatchType
 	 * @see #setMatchType(MatchType)
 	 * @see de.raphaelgeissler.dependencychecker.DependencycheckerPackage#getComponentItemDescription_MatchType()
-	 * @model default="STARTSWITH"
+	 * @model default="WILDCARD"
 	 * @generated
 	 */
 	MatchType getMatchType();

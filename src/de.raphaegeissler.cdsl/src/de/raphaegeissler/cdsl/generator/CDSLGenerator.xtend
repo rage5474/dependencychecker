@@ -77,23 +77,8 @@ class CDSLGenerator extends AbstractGenerator {
 	def createCompItemDescFromUnit(String nextUnit) {
 		val compItemDesc = DependencycheckerFactory.eINSTANCE.createComponentItemDescription
 
-//		compItemDesc.matchType = nextUnit.matchType
-//		compItemDesc.value = nextUnit.getUnitValue
 		compItemDesc.value = nextUnit
 		compItemDesc
-	}
-
-	def getUnitValue(String unit) {
-		val value = unit.split(":").get(1).trim
-		return value.substring(0, (value.length - 1))
-	}
-
-	def getMatchType(String nextUnit) {
-		val splittedUnit = nextUnit.split(":")
-		if (splittedUnit.get(0).trim.equalsIgnoreCase("startswith"))
-			return MatchType.STARTSWITH
-		else
-			throw new IllegalArgumentException("MatchType " + splittedUnit.get(0).trim + " not supported.")
 	}
 
 	def ComponentDescription findCD(Checker checker, String name) {

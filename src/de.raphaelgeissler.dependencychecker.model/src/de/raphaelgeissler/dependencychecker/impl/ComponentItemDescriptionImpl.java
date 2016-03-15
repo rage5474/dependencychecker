@@ -77,7 +77,7 @@ public class ComponentItemDescriptionImpl extends MinimalEObjectImpl.Container i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final MatchType MATCH_TYPE_EDEFAULT = MatchType.STARTSWITH;
+	protected static final MatchType MATCH_TYPE_EDEFAULT = MatchType.WILDCARD;
 
 	/**
 	 * The cached value of the '{@link #getMatchType() <em>Match Type</em>}' attribute.

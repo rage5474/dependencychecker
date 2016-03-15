@@ -308,12 +308,11 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 		initEClass(componentItemDescriptionEClass, ComponentItemDescription.class, "ComponentItemDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentItemDescription_Name(), ecorePackage.getEString(), "name", null, 0, 1, ComponentItemDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentItemDescription_Value(), ecorePackage.getEString(), "value", null, 0, 1, ComponentItemDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentItemDescription_MatchType(), this.getMatchType(), "matchType", "STARTSWITH", 0, 1, ComponentItemDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentItemDescription_MatchType(), this.getMatchType(), "matchType", "WILDCARD", 0, 1, ComponentItemDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(matchTypeEEnum, MatchType.class, "MatchType");
-		addEEnumLiteral(matchTypeEEnum, MatchType.STARTSWITH);
-		addEEnumLiteral(matchTypeEEnum, MatchType.EQUALS);
+		addEEnumLiteral(matchTypeEEnum, MatchType.WILDCARD);
 		addEEnumLiteral(matchTypeEEnum, MatchType.REGEX);
 
 		// Create resource
