@@ -7,7 +7,6 @@ import de.raphaegeissler.cdsl.cDSL.DValidator
 import de.raphaelgeissler.dependencychecker.Checker
 import de.raphaelgeissler.dependencychecker.ComponentDescription
 import de.raphaelgeissler.dependencychecker.DependencycheckerFactory
-import de.raphaelgeissler.dependencychecker.MatchType
 import java.util.Map
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
@@ -16,7 +15,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import de.raphaegeissler.cdsl.cDSL.ComponentID
 
 /**
  * Generates code from your model files on save.
