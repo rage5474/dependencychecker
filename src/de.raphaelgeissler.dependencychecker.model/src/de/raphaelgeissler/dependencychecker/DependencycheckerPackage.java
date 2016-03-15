@@ -141,13 +141,22 @@ public interface DependencycheckerPackage extends EPackage {
 	int COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_DESCRIPTION__PORTS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Component Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_DESCRIPTION_FEATURE_COUNT = 3;
+	int COMPONENT_DESCRIPTION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Component Description</em>' class.
@@ -290,6 +299,17 @@ public interface DependencycheckerPackage extends EPackage {
 	EAttribute getComponentDescription_ForbiddenComponents();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.raphaelgeissler.dependencychecker.ComponentDescription#getPorts <em>Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Ports</em>'.
+	 * @see de.raphaelgeissler.dependencychecker.ComponentDescription#getPorts()
+	 * @see #getComponentDescription()
+	 * @generated
+	 */
+	EReference getComponentDescription_Ports();
+
+	/**
 	 * Returns the meta object for class '{@link de.raphaelgeissler.dependencychecker.ComponentItemDescription <em>Component Item Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -413,6 +433,14 @@ public interface DependencycheckerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS = eINSTANCE.getComponentDescription_ForbiddenComponents();
+
+		/**
+		 * The meta object literal for the '<em><b>Ports</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_DESCRIPTION__PORTS = eINSTANCE.getComponentDescription_Ports();
 
 		/**
 		 * The meta object literal for the '{@link de.raphaelgeissler.dependencychecker.impl.ComponentItemDescriptionImpl <em>Component Item Description</em>}' class.

@@ -149,6 +149,7 @@ public class ComponentDescriptionItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__COMPONENT_ITEMS);
+			childrenFeatures.add(DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__PORTS);
 		}
 		return childrenFeatures;
 	}
@@ -209,6 +210,7 @@ public class ComponentDescriptionItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DependencycheckerPackage.COMPONENT_DESCRIPTION__COMPONENT_ITEMS:
+			case DependencycheckerPackage.COMPONENT_DESCRIPTION__PORTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -230,6 +232,34 @@ public class ComponentDescriptionItemProvider
 			(createChildParameter
 				(DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__COMPONENT_ITEMS,
 				 DependencycheckerFactory.eINSTANCE.createComponentItemDescription()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__PORTS,
+				 DependencycheckerFactory.eINSTANCE.createComponentItemDescription()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__COMPONENT_ITEMS ||
+			childFeature == DependencycheckerPackage.Literals.COMPONENT_DESCRIPTION__PORTS;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

@@ -19,6 +19,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentDescription/name"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dependencychecker.ecore#//ComponentDescription/componentItems"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentDescription/forbiddenComponents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dependencychecker.ecore#//ComponentDescription/ports"/>
     </genClasses>
     <genClasses ecoreClass="dependencychecker.ecore#//ComponentItemDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dependencychecker.ecore#//ComponentItemDescription/id"/>

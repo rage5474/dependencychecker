@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentDescriptionImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentDescriptionImpl#getComponentItems <em>Component Items</em>}</li>
  *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentDescriptionImpl#getForbiddenComponents <em>Forbidden Components</em>}</li>
+ *   <li>{@link de.raphaelgeissler.dependencychecker.impl.ComponentDescriptionImpl#getPorts <em>Ports</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,6 +78,16 @@ public class ComponentDescriptionImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected EList<String> forbiddenComponents;
+
+	/**
+	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPorts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ComponentItemDescription> ports;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,11 +158,25 @@ public class ComponentDescriptionImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ComponentItemDescription> getPorts() {
+		if (ports == null) {
+			ports = new EObjectContainmentEList<ComponentItemDescription>(ComponentItemDescription.class, this, DependencycheckerPackage.COMPONENT_DESCRIPTION__PORTS);
+		}
+		return ports;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case DependencycheckerPackage.COMPONENT_DESCRIPTION__COMPONENT_ITEMS:
 				return ((InternalEList<?>)getComponentItems()).basicRemove(otherEnd, msgs);
+			case DependencycheckerPackage.COMPONENT_DESCRIPTION__PORTS:
+				return ((InternalEList<?>)getPorts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -170,6 +195,8 @@ public class ComponentDescriptionImpl extends MinimalEObjectImpl.Container imple
 				return getComponentItems();
 			case DependencycheckerPackage.COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS:
 				return getForbiddenComponents();
+			case DependencycheckerPackage.COMPONENT_DESCRIPTION__PORTS:
+				return getPorts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -194,6 +221,10 @@ public class ComponentDescriptionImpl extends MinimalEObjectImpl.Container imple
 				getForbiddenComponents().clear();
 				getForbiddenComponents().addAll((Collection<? extends String>)newValue);
 				return;
+			case DependencycheckerPackage.COMPONENT_DESCRIPTION__PORTS:
+				getPorts().clear();
+				getPorts().addAll((Collection<? extends ComponentItemDescription>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -215,6 +246,9 @@ public class ComponentDescriptionImpl extends MinimalEObjectImpl.Container imple
 			case DependencycheckerPackage.COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS:
 				getForbiddenComponents().clear();
 				return;
+			case DependencycheckerPackage.COMPONENT_DESCRIPTION__PORTS:
+				getPorts().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -233,6 +267,8 @@ public class ComponentDescriptionImpl extends MinimalEObjectImpl.Container imple
 				return componentItems != null && !componentItems.isEmpty();
 			case DependencycheckerPackage.COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS:
 				return forbiddenComponents != null && !forbiddenComponents.isEmpty();
+			case DependencycheckerPackage.COMPONENT_DESCRIPTION__PORTS:
+				return ports != null && !ports.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

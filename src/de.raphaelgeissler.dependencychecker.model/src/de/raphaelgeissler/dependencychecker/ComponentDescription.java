@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.raphaelgeissler.dependencychecker.ComponentDescription#getName <em>Name</em>}</li>
  *   <li>{@link de.raphaelgeissler.dependencychecker.ComponentDescription#getComponentItems <em>Component Items</em>}</li>
  *   <li>{@link de.raphaelgeissler.dependencychecker.ComponentDescription#getForbiddenComponents <em>Forbidden Components</em>}</li>
+ *   <li>{@link de.raphaelgeissler.dependencychecker.ComponentDescription#getPorts <em>Ports</em>}</li>
  * </ul>
  *
  * @see de.raphaelgeissler.dependencychecker.DependencycheckerPackage#getComponentDescription()
@@ -83,5 +84,21 @@ public interface ComponentDescription extends EObject {
 	 * @generated
 	 */
 	EList<String> getForbiddenComponents();
+
+	/**
+	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
+	 * The list contents are of type {@link de.raphaelgeissler.dependencychecker.ComponentItemDescription}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ports</em>' containment reference list.
+	 * @see de.raphaelgeissler.dependencychecker.DependencycheckerPackage#getComponentDescription_Ports()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ComponentItemDescription> getPorts();
 
 } // ComponentDescription

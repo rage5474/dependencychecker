@@ -180,6 +180,15 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getComponentDescription_Ports() {
+		return (EReference)componentDescriptionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getComponentItemDescription() {
 		return componentItemDescriptionEClass;
 	}
@@ -247,6 +256,7 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 		createEAttribute(componentDescriptionEClass, COMPONENT_DESCRIPTION__NAME);
 		createEReference(componentDescriptionEClass, COMPONENT_DESCRIPTION__COMPONENT_ITEMS);
 		createEAttribute(componentDescriptionEClass, COMPONENT_DESCRIPTION__FORBIDDEN_COMPONENTS);
+		createEReference(componentDescriptionEClass, COMPONENT_DESCRIPTION__PORTS);
 
 		componentItemDescriptionEClass = createEClass(COMPONENT_ITEM_DESCRIPTION);
 		createEAttribute(componentItemDescriptionEClass, COMPONENT_ITEM_DESCRIPTION__ID);
@@ -294,6 +304,7 @@ public class DependencycheckerPackageImpl extends EPackageImpl implements Depend
 		initEAttribute(getComponentDescription_Name(), ecorePackage.getEString(), "name", null, 0, 1, ComponentDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentDescription_ComponentItems(), this.getComponentItemDescription(), null, "componentItems", null, 0, -1, ComponentDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentDescription_ForbiddenComponents(), ecorePackage.getEString(), "forbiddenComponents", null, 0, -1, ComponentDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentDescription_Ports(), this.getComponentItemDescription(), null, "ports", null, 0, -1, ComponentDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentItemDescriptionEClass, ComponentItemDescription.class, "ComponentItemDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentItemDescription_Id(), ecorePackage.getEString(), "id", null, 0, 1, ComponentItemDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
