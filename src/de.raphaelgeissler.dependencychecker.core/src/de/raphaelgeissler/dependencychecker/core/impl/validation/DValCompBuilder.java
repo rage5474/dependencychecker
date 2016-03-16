@@ -29,4 +29,11 @@ public class DValCompBuilder {
 		return compDesc;
 	}
 
+	public DValCompBuilder port(String portId) {
+		ComponentItemDescription itemDescr = DependencycheckerFactory.eINSTANCE.createComponentItemDescription();
+		itemDescr.setId(portId);
+		compDesc.getPorts().add(itemDescr);
+		return this;
+	}
+
 }

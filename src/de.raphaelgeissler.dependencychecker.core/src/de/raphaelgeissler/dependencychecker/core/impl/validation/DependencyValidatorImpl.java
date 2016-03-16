@@ -43,33 +43,55 @@ public class DependencyValidatorImpl implements DependencyValidator {
 
 	private boolean validate(String pluginToValidate, String dependentPlugin, Checker checkerConfig) {
 
-		ComponentDescription group = foundComponentOfPlugin(pluginToValidate, checkerConfig);
+		ComponentDescription pluginComp = foundComponentOfPlugin(pluginToValidate, checkerConfig);
+		ComponentDescription dependentPluginComp = foundComponentOfPlugin(dependentPlugin, checkerConfig);
 
-		if (group != null) {
+		// One plug-in not specified for checking 
+		// --> is allowed by specification.
+		if (pluginComp == null || dependentPluginComp == null) {
+			return true;
+			// Same component --> is allowed by specification
+		} else if (pluginComp.equals(dependentPluginComp)) {
+			return true;
+			// Dependency is not allowed by definition in checker file
+		} else if (dependentCompIsForbidden(pluginComp, dependentPluginComp)) {
+			return false;
+			// Dependency not forbidden and communication via port
+		} else if (dependentPluginIsPort(dependentPlugin, dependentPluginComp)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-			boolean result = true;
-			for (String notAllowedGroup : group.getForbiddenComponents()) {
-				if (notAllowedGroup != null && !isDependencyAllowed(dependentPlugin, notAllowedGroup))
-					result &= false;
-			}
+	private boolean dependentPluginIsPort(String dependentPlugin, ComponentDescription dependentPluginComp) {
+		for (ComponentItemDescription nextComponentItemDescription : dependentPluginComp.getPorts()) {
+			if (WildCardMatcher.isMatching(dependentPlugin, nextComponentItemDescription.getId()))
+				return true;
+		}
+		return false;
+	}
 
-			return result;
-
+	private boolean dependentCompIsForbidden(ComponentDescription pluginComp,
+			ComponentDescription dependentPluginComp) {
+		for (String nextForbiddenComponent : pluginComp.getForbiddenComponents()) {
+			if (nextForbiddenComponent.equals(dependentPluginComp.getName()))
+				return true;
 		}
 
-		return true;
+		return false;
 	}
 
 	private ComponentDescription foundComponentOfPlugin(String pluginToValidate, Checker checkerConfig) {
-		
+
 		for (ComponentDescription nextComponent : checkerConfig.getComponentDefinitions()) {
 			if (isPluginInComponent(pluginToValidate, nextComponent))
 				return nextComponent;
 		}
-		
+
 		return null;
 	}
-	
+
 	private boolean isPluginInComponent(String pluginToValidate, ComponentDescription group) {
 		for (ComponentItemDescription nextComponentItem : group.getComponentItems()) {
 			String value = nextComponentItem.getId();
@@ -77,25 +99,5 @@ public class DependencyValidatorImpl implements DependencyValidator {
 		}
 		return false;
 	}
-
-	private boolean isDependencyAllowed(String dependentPlugin, String notAllowedGroup) {
-		ComponentDescription notAllowdComponent = getComponentByName(notAllowedGroup);
-		if (notAllowdComponent != null) {
-			if (isPluginInComponent(dependentPlugin, notAllowdComponent))
-				return false;
-		}
-
-		return true;
-	}
-
-	private ComponentDescription getComponentByName(String notAllowedGroup) {
-		for (ComponentDescription nextComponentDescription : checker.getComponentDefinitions()) {
-			if (nextComponentDescription.getName().equals(notAllowedGroup))
-				return nextComponentDescription;
-		}
-		return null;
-	}
-
-	
 
 }
