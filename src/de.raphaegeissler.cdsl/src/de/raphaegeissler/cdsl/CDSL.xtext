@@ -19,16 +19,12 @@ ComponentDescription:
 	'comp' name=ID
 	'{'
 	(ports=Ports)?
-	(units=UnitElements)
-	(notAllowedRef+=NotAllowedRef)*
+	(units=UnitElements)?
+	(notAllowedRef+=NotAllowedRef)?
 	'}';
 
 Ports:
 	'ports' ':' (port+=QualifiedName)+ ';';
-
-QualifiedNames:
-	(qualifiedNames+=QualifiedName)+
-;
 
 NotAllowedRef:
 	'forbidden' ':' (units+=[ComponentDescription])+ ';'
@@ -41,14 +37,12 @@ UnitElements:
 ComponentID:
 	'idents' ':' (qualifiedNames+=QualifiedName)+ ';';
 
-//QualifiedName:
-//  ID ('.' ID)*
-//;
 
 QualifiedName:
-  XID ('.' XID)*
+  WildCardID ('.' WildCardID )*
 ;
 
-XID:
-	ID | '*'
+WildCardID:
+	ID ('*')?
 ;
+

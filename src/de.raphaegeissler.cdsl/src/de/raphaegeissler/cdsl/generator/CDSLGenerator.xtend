@@ -51,15 +51,17 @@ class CDSLGenerator extends AbstractGenerator {
 			val compDesc = DependencycheckerFactory.eINSTANCE.createComponentDescription
 			compDesc.name = nextRefComp.name
 
-			for (nextUnit : nextRefComp.units.unit) {
-				for (q : nextUnit.qualifiedNames) {
-					compDesc.componentItems.add(createCompItemDesc(q))
+			if (nextRefComp.units != null) {
+				for (nextUnit : nextRefComp.units.unit) {
+					for (nextCompId : nextUnit.qualifiedNames) {
+						compDesc.componentItems.add(createCompItemDesc(nextCompId))
+					}
 				}
 			}
 
 			if (nextRefComp.ports != null) {
-				for (nextPort : nextRefComp.ports.port) {
-					compDesc.ports.add(createCompItemDesc(nextPort))
+				for (nextPortId : nextRefComp.ports.port) {
+					compDesc.ports.add(createCompItemDesc(nextPortId))
 				}
 			}
 
@@ -77,15 +79,14 @@ class CDSLGenerator extends AbstractGenerator {
 
 	def createCompItemDesc(String nextUnit) {
 		val compItemDesc = DependencycheckerFactory.eINSTANCE.createComponentItemDescription
-
 		compItemDesc.id = nextUnit
 		compItemDesc
 	}
 
 	def ComponentDescription findCD(Checker checker, String name) {
-		for (c : checker.componentDefinitions) {
-			if (c.name.equals(name))
-				return c
+		for (nextComponent : checker.componentDefinitions) {
+			if (nextComponent.name.equals(name))
+				return nextComponent
 		}
 
 		return null
