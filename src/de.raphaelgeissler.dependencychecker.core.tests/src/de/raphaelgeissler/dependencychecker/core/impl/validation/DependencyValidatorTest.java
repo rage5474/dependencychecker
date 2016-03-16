@@ -154,5 +154,4 @@ public class DependencyValidatorTest extends AbstractDependencyCheckerConfigTest
 		assertFalse(result.wasSuccessful());
 	}
 
-	
 }

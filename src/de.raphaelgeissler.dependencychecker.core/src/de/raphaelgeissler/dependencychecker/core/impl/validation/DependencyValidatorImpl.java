@@ -1,5 +1,6 @@
 package de.raphaelgeissler.dependencychecker.core.impl.validation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.raphaelgeissler.dependencychecker.Checker;
@@ -93,10 +94,15 @@ public class DependencyValidatorImpl implements DependencyValidator {
 	}
 
 	private boolean isPluginInComponent(String pluginToValidate, ComponentDescription group) {
-		for (ComponentItemDescription nextComponentItem : group.getComponentItems()) {
+		List<ComponentItemDescription> groupIds = new ArrayList<ComponentItemDescription>(group.getPorts());
+		groupIds.addAll(group.getComponentItems());
+		
+		for (ComponentItemDescription nextComponentItem : groupIds) {
 			String value = nextComponentItem.getId();
-			return WildCardMatcher.isMatching(pluginToValidate, value);
+			if(WildCardMatcher.isMatching(pluginToValidate, value))
+				return true;
 		}
+		
 		return false;
 	}
 
