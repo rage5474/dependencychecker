@@ -24,7 +24,7 @@ ComponentDescription:
 	'}';
 
 Ports:
-	'ports' ':' QualifiedNames ';';
+	'ports' ':' (port+=QualifiedName)+ ';';
 
 QualifiedNames:
 	(qualifiedNames+=QualifiedName)+

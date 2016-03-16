@@ -20,7 +20,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CDSL.ecore#//ComponentDescription/units"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CDSL.ecore#//ComponentDescription/notAllowedRef"/>
     </genClasses>
-    <genClasses ecoreClass="CDSL.ecore#//Ports"/>
+    <genClasses ecoreClass="CDSL.ecore#//Ports">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CDSL.ecore#//Ports/port"/>
+    </genClasses>
     <genClasses ecoreClass="CDSL.ecore#//QualifiedNames">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CDSL.ecore#//QualifiedNames/qualifiedNames"/>
     </genClasses>
