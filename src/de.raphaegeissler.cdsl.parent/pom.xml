@@ -13,14 +13,6 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
-	<!-- modules>
-		<module>de.raphaegeissler.cdsl</module>
-		<module>de.raphaegeissler.cdsl.ide</module>
-		<module>de.raphaegeissler.cdsl.ui</module>
-		<module>de.raphaegeissler.cdsl.target</module>
-		<module>de.raphaegeissler.cdsl.tests</module>
-		<module>de.raphaegeissler.cdsl.ui.tests</module>
-	</modules -->
 	<build>
 		<plugins>
 			<plugin>

@@ -3,7 +3,6 @@
 
 <product name="DependencyChecker" uid="de.raphaelgeissler.dependencychecker.tycho.releng.product" id="de.raphaelgeissler.dependencychecker.ui.console.console" application="de.raphaelgeissler.dependencychecker.ui.console.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -16,14 +15,12 @@
 
    <windowImages/>
 
-
    <launcher name="dvalidator-console">
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -54,9 +51,9 @@
 
    <features>
       <feature id="de.raphaelgeissler.dependencychecker.core.feature" version="1.0.0.qualifier"/>
-      <feature id="org.eclipse.emf.ecore" version="2.11.1.v20150805-0538"/>
-      <feature id="org.eclipse.emf.common" version="2.11.0.v20150805-0538"/>
-      <feature id="org.eclipse.e4.rcp" version="1.4.0.v20150903-1804"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.emf.common"/>
+      <feature id="org.eclipse.e4.rcp"/>
       <feature id="de.raphaelgeissler.dependencychecker.ui.console.feature" version="1.0.0.qualifier"/>
    </features>
 

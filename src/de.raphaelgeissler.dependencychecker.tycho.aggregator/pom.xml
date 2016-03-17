@@ -4,7 +4,7 @@
   <artifactId>de.raphaelgeissler.dependencychecker.tycho.aggregator</artifactId>
   <packaging>pom</packaging>
   
-   <parent>
+  <parent>
     <groupId>de.raphaelgeissler</groupId>
     <artifactId>de.raphaelgeissler.dependencychecker.tycho.parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -12,6 +12,14 @@
   </parent>
 
   <modules>
+  	<module>../de.raphaegeissler.cdsl</module>
+  	<!-- module>../de.raphaegeissler.cdsl.edit</module>
+  	<module>../de.raphaegeissler.cdsl.editor</module -->
+  	<module>../de.raphaegeissler.cdsl.ide</module>
+  	<module>../de.raphaegeissler.cdsl.target</module>
+  	<module>../de.raphaegeissler.cdsl.tests</module>
+  	<module>../de.raphaegeissler.cdsl.ui</module>
+  	<module>../de.raphaegeissler.cdsl.ui.tests</module>
   	<module>../de.raphaelgeissler.dependencychecker.core</module>
     <module>../de.raphaelgeissler.dependencychecker.core.tests</module>
     <module>../de.raphaelgeissler.dependencychecker.feature</module>

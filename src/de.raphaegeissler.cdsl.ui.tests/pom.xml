@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>de.raphaegeissler.cdsl</groupId>
-		<artifactId>de.raphaegeissler.cdsl.parent</artifactId>
+		<groupId>de.raphaelgeissler</groupId>
+		<artifactId>de.raphaelgeissler.dependencychecker.tycho.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../de.raphaegeissler.cdsl.parent</relativePath>
+		<relativePath>../de.raphaelgeissler.dependencychecker.tycho.parent</relativePath>
 	</parent>
 	<artifactId>de.raphaegeissler.cdsl.ui.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
@@ -19,7 +19,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${tycho.version}</version>
 				<configuration>
 					<failIfNoTests>false</failIfNoTests>
 					<useUIHarness>true</useUIHarness>
