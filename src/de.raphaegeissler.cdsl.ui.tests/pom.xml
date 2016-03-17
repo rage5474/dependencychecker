@@ -7,7 +7,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../de.raphaelgeissler.dependencychecker.tycho.parent</relativePath>
 	</parent>
-	<artifactId>de.raphaegeissler.cdsl.ui.tests</artifactId>
+	<artifactId>de.ragedev.cdsl.ui.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<build>

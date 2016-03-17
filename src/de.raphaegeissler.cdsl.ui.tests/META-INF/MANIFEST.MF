@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: de.raphaegeissler.cdsl.ui.tests
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: de.raphaegeissler.cdsl.ui.tests; singleton:=true
+Bundle-SymbolicName: de.ragedev.cdsl.ui.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: de.raphaegeissler.cdsl.ui,
  org.junit;bundle-version="4.7.0",
