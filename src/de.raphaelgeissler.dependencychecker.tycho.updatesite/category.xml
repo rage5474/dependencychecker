@@ -3,5 +3,8 @@
    <feature url="features/de.raphaelgeissler.dependencychecker.feature_1.0.0.qualifier.jar" id="de.raphaelgeissler.dependencychecker.feature" version="1.0.0.qualifier">
       <category name="de.raphaelgeissler.dependencychecker"/>
    </feature>
+   <feature url="features/de.ragedev.cdsl.feature_1.0.0.qualifier.jar" id="de.ragedev.cdsl.feature" version="1.0.0.qualifier">
+      <category name="de.raphaelgeissler.dependencychecker"/>
+   </feature>
    <category-def name="de.raphaelgeissler.dependencychecker" label="DependencyChecker (EXPERIMENTAL)"/>
 </site>
