@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Export-Package: de.ragedev.cdsl.ide.contentassist.antlr,de.ragedev.cds
+ l.ide.contentassist.antlr.internal
+Require-Bundle: de.ragedev.cdsl,org.eclipse.xtext.ide,org.eclipse.xtex
+ t.xbase.ide
+Bundle-Vendor: My Company
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 1.0.0.201603171055
+Bundle-Name: de.ragedev.cdsl.ide
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: de.ragedev.cdsl.ide; singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

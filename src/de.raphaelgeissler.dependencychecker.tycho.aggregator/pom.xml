@@ -13,12 +13,11 @@
 
 	<modules>
 		<module>../de.ragedev.cdsl.ui.tests</module>
-		<module>../de.raphaegeissler.cdsl</module>
-		<!-- module>../de.raphaegeissler.cdsl.edit</module> <module>../de.raphaegeissler.cdsl.editor</module -->
-		<module>../de.raphaegeissler.cdsl.ide</module>
+		<module>../de.ragedev.cdsl</module>
+		<module>../de.ragedev.cdsl.ide</module>
 		<module>../de.raphaegeissler.cdsl.target</module>
-		<module>../de.raphaegeissler.cdsl.tests</module>
-		<module>../de.raphaegeissler.cdsl.ui</module>
+		<module>../de.ragedev.cdsl.tests</module>
+		<module>../de.ragedev.cdsl.ui</module>
   	
   	<module>../de.raphaelgeissler.dependencychecker.core</module>
     <module>../de.raphaelgeissler.dependencychecker.core.tests</module>

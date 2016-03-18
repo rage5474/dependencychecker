@@ -1,0 +1,48 @@
+grammar de.ragedev.cdsl.CDSL with org.eclipse.xtext.common.Terminals
+
+generate cDSL "http://www.ragedev.de/cdsl/CDSL"
+
+Domainmodel:
+	(entries+=AbstractEntry)*;
+
+AbstractEntry:
+	DValidator | ComponentDescription;
+
+DValidator:
+	'dval' valName=ID
+	'{'
+	'comps' ':' (refComponents+=[ComponentDescription])+ ';'
+	'}'
+;
+
+ComponentDescription:
+	'comp' name=ID
+	'{'
+	(ports=Ports)?
+	(units=UnitElements)?
+	(notAllowedRef+=NotAllowedRef)?
+	'}';
+
+Ports:
+	'ports' ':' (port+=QualifiedName)+ ';';
+
+NotAllowedRef:
+	'forbidden' ':' (units+=[ComponentDescription])+ ';'
+;
+
+UnitElements:
+	(unit+=ComponentID)+ 
+;
+
+ComponentID:
+	'idents' ':' (qualifiedNames+=QualifiedName)+ ';';
+
+
+QualifiedName:
+  WildCardID ('.' WildCardID )*
+;
+
+WildCardID:
+	ID ('*')?
+;
+

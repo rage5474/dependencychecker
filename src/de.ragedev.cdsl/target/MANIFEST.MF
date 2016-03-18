@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Export-Package: de.ragedev.cdsl.serializer,de.ragedev.cdsl.parser.antl
+ r,de.ragedev.cdsl,de.ragedev.cdsl.parser.antlr.internal,de.ragedev.cd
+ sl.generator,de.ragedev.cdsl.services,de.ragedev.cdsl.scoping,de.rage
+ dev.cdsl.cDSL.impl,de.ragedev.cdsl.cDSL.util,de.ragedev.cdsl.cDSL,de.
+ ragedev.cdsl.validation
+Require-Bundle: org.eclipse.xtext,org.eclipse.xtext.xbase,org.eclipse.
+ equinox.common;bundle-version="3.5.0",org.eclipse.emf.ecore,org.eclip
+ se.xtext.util,org.antlr.runtime,org.eclipse.xtend.lib,org.eclipse.emf
+ .common,org.eclipse.xtext.xbase.lib,de.raphaelgeissler.dependencychec
+ ker.model;bundle-version="1.0.0"
+Bundle-Vendor: My Company
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 1.0.0.201603171055
+Bundle-Name: de.ragedev.cdsl
+Bundle-ManifestVersion: 2
+Import-Package: org.apache.log4j
+Bundle-SymbolicName: de.ragedev.cdsl; singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+
