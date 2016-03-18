@@ -52,7 +52,7 @@
 					<target>
 						<artifact>
 							<groupId>de.raphaelgeissler</groupId>
-							<artifactId>de.raphaegeissler.cdsl.target</artifactId>
+							<artifactId>de.ragedev.cdsl.target</artifactId>
 							<version>1.0.0-SNAPSHOT</version>
 						</artifact>
 					</target>

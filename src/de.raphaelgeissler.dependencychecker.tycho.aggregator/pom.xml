@@ -15,7 +15,7 @@
 		<module>../de.ragedev.cdsl.ui.tests</module>
 		<module>../de.ragedev.cdsl</module>
 		<module>../de.ragedev.cdsl.ide</module>
-		<module>../de.raphaegeissler.cdsl.target</module>
+		<module>../de.ragedev.cdsl.target</module>
 		<module>../de.ragedev.cdsl.tests</module>
 		<module>../de.ragedev.cdsl.ui</module>
   	
