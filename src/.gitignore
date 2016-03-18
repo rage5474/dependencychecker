@@ -1,6 +1,6 @@
 bin
 .DS_Store
-target
+target/
 *.xtendbin
 *.java._trace
 *.java_trace
