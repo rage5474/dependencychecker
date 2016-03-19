@@ -9,13 +9,13 @@
 ### How can I install this Eclipse Feature?
 Installation can be done via Eclipse Update-Site:
  * https://github.com/rage5474/dependencychecker.updatesite/raw/master
- * To get both feature Checker and DSL --> Select all. 
+ * To get both feature Checker and DSL -> Select all. 
 
 ### Try it out
 * Create a new project to create a dependency checker file with the Component DSL, e.g. org.example.cdsl.
 * Create a file with the extension cdsl in the new plug-in, e.g. example.cdsl.
 * Open the file and describe your components. After saving example.cdsl a new file should be created in the folder src-gen (this is your dependencychecker file).
-* To activate this file go to Window --> Preferences --> Dependency Checker Preferences and add the path to your checker file, e.g. org.example.cdsl/src-gen/example.dependencychecker .
+* To activate this file go to Window --> Preferences -> Dependency Checker Preferences and add the path to your checker file, e.g. org.example.cdsl/src-gen/example.dependencychecker .
 * Now each change of a manifest file in your workspace will be checked. 
 
 ### How works the CDSL (by example)
@@ -57,10 +57,10 @@ Installation can be done via Eclipse Update-Site:
 * Select your install directory and click Finish.
 * Wait until a new Eclipse is opened and all projects are imported.
 * Open file de.ragedev.cdsl.target.target (in plug-in de.ragedev.cdsl.target) and click 'Set as Target Platform'.
-* To run a example, select the project de.ragedev.cdsl, click-right and select Run As --> Eclipse Application
+* To run a example, select the project de.ragedev.cdsl, click-right and select Run As -> Eclipse Application
 * To build everything: 
     * Select the file pom.xml in the plug-in de.raphaelgeissler.dependencychecker.tycho.aggregator
-	* Right-Click --> Run As --> Maven build .. 
+	* Right-Click -> Run As -> Maven build .. 
 	* Add 'clean package' in Goals
 	* Click Run
 
