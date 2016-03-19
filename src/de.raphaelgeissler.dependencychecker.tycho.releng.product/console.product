@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="DependencyChecker" uid="de.raphaelgeissler.dependencychecker.tycho.releng.product" id="de.raphaelgeissler.dependencychecker.ui.console.console" application="de.raphaelgeissler.dependencychecker.ui.console.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
+<product name="DependencyChecker" uid="de.raphaelgeissler.dependencychecker.tycho.releng.product" id="de.raphaelgeissler.dependencychecker.ui.console.console" application="de.raphaelgeissler.dependencychecker.ui.console.application" version="1.0.1" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -50,7 +50,7 @@
    </plugins>
 
    <features>
-      <feature id="de.raphaelgeissler.dependencychecker.core.feature" version="1.0.0.qualifier"/>
+      <feature id="de.raphaelgeissler.dependencychecker.core.feature" version="1.0.1.qualifier"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.e4.rcp"/>
