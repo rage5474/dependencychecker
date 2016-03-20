@@ -26,38 +26,12 @@ public class DependencyValidationResultImpl implements DependencyValidationResul
 
 	public void addResultMessage(final String bundleID, final String dependentPlugin, final int lineNumber, final boolean correct)
 	{
-		resultMessages.add(new DependencyValidationResultMessage() {
-			
-			@Override
-			public String getDependencyPluginId() {
-				return dependentPlugin;
-			}
-			
-			@Override
-			public int getLineNumber() {
-				return lineNumber;
-			}
-
-			@Override
-			public String getPluginId() {
-				return bundleID;
-			}
-
-			@Override
-			public boolean correct() {
-				return correct;
-			}
-			
-			@Override
-			public String toString() {
-
-				String checkMarkSymbol = Character.toString((char)((int)0x2714));
-				
-				String successSymbol = correct ? checkMarkSymbol : "X"; 
-				
-				return bundleID + " --> " + dependentPlugin + " | " + successSymbol + " | " + lineNumber ;
-			}
-		});
+		addResultMessage(new DependencyValidationResultMessageImpl(correct, lineNumber, dependentPlugin, bundleID));
+	}
+	
+	public void addResultMessage(final DependencyValidationResultMessage resultMessage)
+	{
+		resultMessages.add(resultMessage);
 	}
 	
 	@Override

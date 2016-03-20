@@ -1,12 +1,11 @@
 package de.raphaelgeissler.dependencychecker.core.impl.validation;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.jar.Manifest;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import de.raphaelgeissler.dependencychecker.Checker;
@@ -14,12 +13,8 @@ import de.raphaelgeissler.dependencychecker.core.api.DependencyValidationResult;
 import de.raphaelgeissler.dependencychecker.core.api.DependencyValidator;
 import de.raphaelgeissler.dependencychecker.core.impl.manifest.ManifestBuilder;
 import de.raphaelgeissler.dependencychecker.core.impl.manifest.ManifestDataStore;
-import de.raphaelgeissler.dependencychecker.core.impl.validation.DValBuilder;
-import de.raphaelgeissler.dependencychecker.core.impl.validation.DValCompBuilder;
-import de.raphaelgeissler.dependencychecker.core.impl.validation.DependencyCheckerConfig;
-import de.raphaelgeissler.dependencychecker.core.impl.validation.DependencyValidatorImpl;
 
-public class DependencyValidatorTest extends AbstractDependencyCheckerConfigTest {
+public class DependencyValidatorOldTest extends AbstractDependencyCheckerConfigTest {
 
 	@Test
 	public void testName() throws Exception {

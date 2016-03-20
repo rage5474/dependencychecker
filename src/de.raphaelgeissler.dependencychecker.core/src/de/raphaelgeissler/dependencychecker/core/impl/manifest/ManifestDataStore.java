@@ -16,12 +16,14 @@ import java.util.jar.Manifest;
 
 public class ManifestDataStore {
 
-	private Map<String, List<String>> dependencyMap = new HashMap<>();
-	private Map<String, Integer> lineNumberMap = new HashMap<>();
+	private static final String BUNDLE_SYMBOLIC_NAME = "Bundle-SymbolicName";
+	private static final String REQUIRE_BUNDLE = "Require-Bundle";
+	private static final String IMPORT_PACKAGE = "Import-Package";
+	
+	private Map<String, PluginData> pluginDataMap = new HashMap<>();
 
 	public ManifestDataStore() {
 	}
-
 	
 	public boolean parseManifestFiles(List<String> pathToManifestFiles) {
 		for (String nextPathToManifest : pathToManifestFiles) {
@@ -29,11 +31,15 @@ public class ManifestDataStore {
 				File manifestFile = new File(nextPathToManifest);
 				parseManifestFile(manifestFile);
 			} catch (IOException e) {
-				dependencyMap.clear();
+				cleanup();
 				return false;
 			}
 		}
 		return true;
+	}
+
+	private void cleanup() {
+		pluginDataMap.clear();
 	}
 
 	public boolean parseManifests(List<Manifest> manifests) {
@@ -65,25 +71,49 @@ public class ManifestDataStore {
 
 			String bundleID = parseBundleID(manifest);
 			List<String> requireBundles = parseRequireBundleAttribute(manifest);
-			dependencyMap.put(bundleID, requireBundles);
-
-			int lineNumber = getLineNumber(file);
-			lineNumberMap.put(bundleID, lineNumber);
-
+			List<String> importPackages = parseImportPackageAttribute(manifest);
+			Map<String, List<Integer>> lineNumbers = getLineNumber(Arrays.asList(REQUIRE_BUNDLE,IMPORT_PACKAGE),file);
+			
+			pluginDataMap.put(bundleID, new PluginData(bundleID, requireBundles, importPackages, getRequiredBundleLineNumber(lineNumbers), getImportPackageLineNumber(lineNumbers)));
+			
 		} catch (IOException ex) {
 			throw ex;
 		}
 	}
 
+	private Integer getRequiredBundleLineNumber(Map<String, List<Integer>> lineNumbers) {
+		return getLineNumber(REQUIRE_BUNDLE, lineNumbers);
+	}
+
+	private Integer getLineNumber(String value, Map<String, List<Integer>> lineNumbers) {
+		List<Integer> result = lineNumbers.get(value);
+		if(result.isEmpty())
+			return null;
+		else
+			return result.get(0);
+	}
+	
+	private Integer getImportPackageLineNumber(Map<String, List<Integer>> lineNumbers) {
+		return getLineNumber(IMPORT_PACKAGE, lineNumbers);
+	}
+
 	private String parseBundleID(Manifest manifest) {
-		return manifest.getMainAttributes().getValue("Bundle-SymbolicName").split(";")[0];
+		return manifest.getMainAttributes().getValue(BUNDLE_SYMBOLIC_NAME).split(";")[0];
 	}
 
 	private List<String> parseRequireBundleAttribute(Manifest manifest) {
+		return parseRequireBundleAttribute(REQUIRE_BUNDLE, manifest);
+	}
+	
+	private List<String> parseImportPackageAttribute(Manifest manifest) {
+		return parseRequireBundleAttribute(IMPORT_PACKAGE, manifest);
+	}
+	
+	private List<String> parseRequireBundleAttribute(String value, Manifest manifest) {
 		final List<String> requireBundleList = new ArrayList<String>();
 
 		final Attributes mainAttributes = manifest.getMainAttributes();
-		final String requireBundleAttribute = mainAttributes.getValue("Require-Bundle");
+		final String requireBundleAttribute = mainAttributes.getValue(value);
 		if (requireBundleAttribute != null) {
 			final String[] requireBundles = requireBundleAttribute.split(",");
 			for (String nextRequireBundle : requireBundles) {
@@ -94,27 +124,16 @@ public class ManifestDataStore {
 		return requireBundleList;
 	}
 
-	private int getLineNumber(File manifestFile) throws IOException {
-
-		Map<String, List<Integer>> result = LineNumberFinder.find(Arrays.asList("Require-Bundle"), manifestFile);
-		List<Integer> lineNumbers = result.get("Require-Bundle");
-
-		if (lineNumbers.isEmpty())
-			return 0;
-		else
-			return lineNumbers.get(0);
-	}
-
-	public List<String> getDependencies(String pluginId) {
-		return dependencyMap.get(pluginId);
+	private Map<String, List<Integer>> getLineNumber(List<String> searchStrings, File manifestFile) throws IOException {
+		return LineNumberFinder.find(searchStrings, manifestFile);
 	}
 
 	public List<String> getIDs() {
-		return new ArrayList<>(dependencyMap.keySet());
+		return new ArrayList<>(pluginDataMap.keySet());
 	}
 
-	public int getLineNumber(String pluginId) {
-		return lineNumberMap.get(pluginId);
+	public PluginData getPluginData(String pluginId) {
+		return pluginDataMap.get(pluginId);
 	}
 
 }

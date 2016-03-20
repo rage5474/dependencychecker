@@ -1,51 +1,64 @@
 package de.raphaelgeissler.dependencychecker.core.impl.manifest;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.jar.Manifest;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import de.raphaelgeissler.dependencychecker.core.impl.manifest.ManifestDataStore;
 
 public class ManifestDataStoreTest {
 
 	private ManifestDataStore manifestDataStore;
 
 	@Before
-	public void setup()
-	{
-		File manifestCore = new File("files/example/core/MANIFEST.MF");
-		File manifestModel = new File("files/example/model/MANIFEST.MF");
-		
+	public void setup() {
+		Manifest manifestCore = new ManifestBuilder().symbolicName("de.raphaelgeissler.example.core")
+				.addRequiredBundle("de.raphaelgeissler.example.model", "1.0.0")
+				.addImportPackage("de.raphaelgeissler.example.ui", "1.0.0").build();
+
+		Manifest manifestModel = new ManifestBuilder().symbolicName("de.raphaelgeissler.example.model").build();
+
+		Manifest manifestUi = new ManifestBuilder().symbolicName("de.raphaelgeissler.example.ui").build();
+
 		manifestDataStore = new ManifestDataStore();
-		manifestDataStore.parseManifestFiles(Arrays.asList(manifestCore.getAbsolutePath(),manifestModel.getAbsolutePath()));
-		
+		manifestDataStore.parseManifests(Arrays.asList(manifestCore, manifestModel, manifestUi));
+	}
+
+	@Test
+	public void areRequiredBundleParsedCorrect() throws Exception {
+
+		List<String> requiredBundles =  manifestDataStore.getPluginData("de.raphaelgeissler.example.core").getRequiredBundles();
+		List<String> expectedRequiredBundles = Arrays.asList("de.raphaelgeissler.example.model");
+
+		assertEquals(expectedRequiredBundles, requiredBundles);
+	}
+
+	@Test
+	public void areImportPackageParsedCorrect() throws Exception {
+
+		List<String> importPackages = manifestDataStore.getPluginData("de.raphaelgeissler.example.core").getImportPackages();
+		List<String> expectedImportPackages = Arrays.asList("de.raphaelgeissler.example.ui");
+
+		assertEquals(expectedImportPackages, importPackages);
 	}
 	
 	@Test
-	public void parseTwoManifest() throws Exception {
+	public void testName() throws Exception {
+		PluginData pluginData = manifestDataStore.getPluginData("de.raphaelgeissler.example.core");
 		
-		List<String> dependenciesCore = manifestDataStore.getDependencies("de.raphaelgeissler.example.core");
-		List<String> expectedDependenciesCore = Arrays.asList("de.raphaelgeissler.example.model");
-		
-		List<String> dependenciesModel = manifestDataStore.getDependencies("de.raphaelgeissler.example.model");
-		List<String> expecteddependenciesModel = new ArrayList<>();
-
-		assertEquals(expectedDependenciesCore, dependenciesCore);
-		assertEquals(expecteddependenciesModel, dependenciesModel);
+		assertEquals("de.raphaelgeissler.example.core", pluginData.getSymbolicName());
+		assertEquals(Arrays.asList("de.raphaelgeissler.example.model"), pluginData.getRequiredBundles());
+		assertEquals(Arrays.asList("de.raphaelgeissler.example.ui"), pluginData.getImportPackages());
 	}
-	
+
 	@Test
 	public void getManifestIDs() throws Exception {
-		
-		List<String> expectedResult = Arrays.asList("de.raphaelgeissler.example.core","de.raphaelgeissler.example.model");
-		
-		assertEquals(expectedResult, manifestDataStore.getIDs());
+		assertTrue(manifestDataStore.getIDs().contains("de.raphaelgeissler.example.core"));
+		assertTrue(manifestDataStore.getIDs().contains("de.raphaelgeissler.example.model"));
+		assertTrue(manifestDataStore.getIDs().contains("de.raphaelgeissler.example.ui"));
 	}
-	
+
 }

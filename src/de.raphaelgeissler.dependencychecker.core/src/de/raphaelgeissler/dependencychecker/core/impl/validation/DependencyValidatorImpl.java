@@ -7,6 +7,7 @@ import de.raphaelgeissler.dependencychecker.Checker;
 import de.raphaelgeissler.dependencychecker.ComponentDescription;
 import de.raphaelgeissler.dependencychecker.ComponentItemDescription;
 import de.raphaelgeissler.dependencychecker.core.api.DependencyValidationResult;
+import de.raphaelgeissler.dependencychecker.core.api.DependencyValidationResultMessage;
 import de.raphaelgeissler.dependencychecker.core.api.DependencyValidator;
 import de.raphaelgeissler.dependencychecker.core.impl.manifest.ManifestDataStore;
 
@@ -26,20 +27,48 @@ public class DependencyValidatorImpl implements DependencyValidator {
 		DependencyValidationResultImpl result = new DependencyValidationResultImpl();
 
 		for (String nextPluginToValidate : manifestDataStore.getIDs()) {
-			List<String> dependentPlugins = manifestDataStore.getDependencies(nextPluginToValidate);
-			for (String nextDependentPlugin : dependentPlugins) {
-				if (!validate(nextPluginToValidate, nextDependentPlugin, checker)) {
-					result.setSuccessful(false);
-					result.addResultMessage(nextPluginToValidate, nextDependentPlugin,
-							manifestDataStore.getLineNumber(nextPluginToValidate), false);
-				} else {
-					result.addResultMessage(nextPluginToValidate, nextDependentPlugin,
-							manifestDataStore.getLineNumber(nextPluginToValidate), true);
-				}
-			}
+			validateRequiredBundles(result, nextPluginToValidate);
+			validateImportPackages(result, nextPluginToValidate);
 		}
 
 		return result;
+	}
+
+	private void validateRequiredBundles(DependencyValidationResultImpl result, String nextPluginToValidate) {
+		List<String> dependentPlugins = manifestDataStore.getPluginData(nextPluginToValidate).getRequiredBundles();
+		for (String nextDependentPlugin : dependentPlugins) {
+			Integer lineNumber = manifestDataStore.getPluginData(nextPluginToValidate).getRequireBundleLineNumber();
+			if (!validate(nextPluginToValidate, nextDependentPlugin, checker)) {
+				result.setSuccessful(false);
+				result.addResultMessage(createFailMessage(lineNumber, nextPluginToValidate, nextDependentPlugin));
+			} else {
+				result.addResultMessage(createSuccessMessage(lineNumber, nextPluginToValidate, nextDependentPlugin));
+			}
+		}
+	}
+
+	private DependencyValidationResultMessage createFailMessage(Integer lineNumber, String nextPluginToValidate,
+			String nextDependentPlugin) {
+		return new DependencyValidationResultMessageImpl(false, lineNumber, nextDependentPlugin, nextPluginToValidate);
+	}
+
+	private DependencyValidationResultMessage createSuccessMessage(Integer lineNumber, String nextPluginToValidate,
+			String nextDependentPlugin) {
+		return new DependencyValidationResultMessageImpl(true, lineNumber, nextDependentPlugin, nextPluginToValidate);
+	}
+
+	private void validateImportPackages(DependencyValidationResultImpl result, String nextPluginToValidate) {
+		List<String> dependentPlugins = manifestDataStore.getPluginData(nextPluginToValidate).getImportPackages();
+		for (String nextDependentPlugin : dependentPlugins) {
+			Integer lineNumber = manifestDataStore.getPluginData(nextPluginToValidate).getImportPackagesLineNumber();
+			if (!validate(nextPluginToValidate, nextDependentPlugin, checker)) {
+				result.setSuccessful(false);
+				result.addResultMessage(createFailMessage(lineNumber, nextPluginToValidate, nextDependentPlugin));
+			} else {
+				result.addResultMessage(createSuccessMessage(lineNumber, nextPluginToValidate, nextDependentPlugin));
+			}
+		}
+
 	}
 
 	private boolean validate(String pluginToValidate, String dependentPlugin, Checker checkerConfig) {
@@ -47,7 +76,7 @@ public class DependencyValidatorImpl implements DependencyValidator {
 		ComponentDescription pluginComp = foundComponentOfPlugin(pluginToValidate, checkerConfig);
 		ComponentDescription dependentPluginComp = foundComponentOfPlugin(dependentPlugin, checkerConfig);
 
-		// One plug-in not specified for checking 
+		// One plug-in not specified for checking
 		// --> is allowed by specification.
 		if (pluginComp == null || dependentPluginComp == null) {
 			return true;
@@ -96,13 +125,13 @@ public class DependencyValidatorImpl implements DependencyValidator {
 	private boolean isPluginInComponent(String pluginToValidate, ComponentDescription group) {
 		List<ComponentItemDescription> groupIds = new ArrayList<ComponentItemDescription>(group.getPorts());
 		groupIds.addAll(group.getComponentItems());
-		
+
 		for (ComponentItemDescription nextComponentItem : groupIds) {
 			String value = nextComponentItem.getId();
-			if(WildCardMatcher.isMatching(pluginToValidate, value))
+			if (WildCardMatcher.isMatching(pluginToValidate, value))
 				return true;
 		}
-		
+
 		return false;
 	}
 
