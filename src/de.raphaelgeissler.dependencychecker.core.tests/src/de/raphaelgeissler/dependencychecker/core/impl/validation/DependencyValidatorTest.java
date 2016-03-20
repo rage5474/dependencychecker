@@ -21,39 +21,6 @@ import de.raphaelgeissler.dependencychecker.core.impl.validation.DependencyValid
 
 public class DependencyValidatorTest extends AbstractDependencyCheckerConfigTest {
 
-	private DependencyCheckerConfig dependencyCheckerConfig;
-	private ManifestDataStore manifestDataStore;
-
-	@Before
-	public void setup() {
-		File configFile = new File("files/example/example.dependencychecker");
-		dependencyCheckerConfig = new DependencyCheckerConfig();
-		dependencyCheckerConfig.loadData(configFile.getAbsolutePath());
-
-		File manifestCore = new File("files/example/core/MANIFEST.MF");
-		File manifestModel = new File("files/example/model/MANIFEST.MF");
-		File manifestUI = new File("files/example/ui/MANIFEST.MF");
-
-		manifestDataStore = new ManifestDataStore();
-		manifestDataStore.parseManifestFiles(Arrays.asList(manifestCore.getAbsolutePath(),
-				manifestModel.getAbsolutePath(), manifestUI.getAbsolutePath()));
-
-	}
-
-	@Test
-	public void complexFailingValidation() throws Exception {
-		DependencyValidator dependencyValidator = new DependencyValidatorImpl(dependencyCheckerConfig.getChecker(),
-				manifestDataStore);
-		DependencyValidationResult result = dependencyValidator.validate();
-
-		assertFalse(result.wasSuccessful());
-		assertTrue(result.getResultMessages().size() == 3);
-		assertEquals("de.raphaelgeissler.example.ui", result.getResultMessages().get(2).getPluginId());
-		assertEquals("de.raphaelgeissler.example.model", result.getResultMessages().get(2).getDependencyPluginId());
-		assertEquals(7, result.getResultMessages().get(2).getLineNumber());
-		assertFalse(result.getResultMessages().get(2).correct());
-	}
-
 	@Test
 	public void testName() throws Exception {
 
