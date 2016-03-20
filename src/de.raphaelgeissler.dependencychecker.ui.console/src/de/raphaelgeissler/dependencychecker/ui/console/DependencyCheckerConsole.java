@@ -103,12 +103,7 @@ public class DependencyCheckerConsole implements IApplication {
 		System.out.println("Validation details");
 		System.out.println("------------------------------------------------------");
 		for (DependencyValidationResultMessage nextResultMessage : result.getResultMessages()) {
-			String resultString = "OK";
-			if(!nextResultMessage.correct()){
-				resultString = "FAILED";
-			}
-			System.out.println(nextResultMessage.getPluginId() + "\t--> "
-					+ nextResultMessage.getDependencyPluginId() + ":\t["+ resultString + "]");
+			System.out.println(nextResultMessage.toString());
 		}
 		System.out.println("------------------------------------------------------");
 	}
