@@ -74,7 +74,6 @@ public class DependencyValidatorTest extends AbstractDependencyCheckerConfigTest
 		DependencyValidator dependencyValidator = new DependencyValidatorImpl(checker, store);
 		DependencyValidationResult result = dependencyValidator.validate();
 
-		System.out.println(result.getResultMessages());
 		assertFalse(result.wasSuccessful());
 
 	}
