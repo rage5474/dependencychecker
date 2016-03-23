@@ -19,6 +19,7 @@ import de.raphaelgeissler.dependencychecker.core.api.DependencyValidationResult;
 import de.raphaelgeissler.dependencychecker.core.api.DependencyValidationResultMessage;
 import de.raphaelgeissler.dependencychecker.core.api.DependencyValidator;
 import de.raphaelgeissler.dependencychecker.core.api.DependencyValidatorFactory;
+import de.raphaelgeissler.dependencychecker.core.api.PlantUMLTransformer;
 
 public class DependencyCheckerConsole implements IApplication {
 
@@ -32,6 +33,7 @@ public class DependencyCheckerConsole implements IApplication {
 			DependencyValidationResult result = validateDependencies(cmd);
 			validationSuccessful = result.wasSuccessful();
 			printValidationResult(result);
+			PlantUMLTransformer.transform("result.iuml", getConfigPath(cmd), result);
 		} else {
 			printHelp(options);
 			validationSuccessful = false;

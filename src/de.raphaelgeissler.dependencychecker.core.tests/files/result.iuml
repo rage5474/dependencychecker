@@ -1,0 +1,45 @@
+@startuml
+sprite $error [16x16/16] {
+0000000000000000
+000000FFFF000000
+000000FFFF000000
+000000FFFF000000
+000000FFFF000000
+000000FFFF000000
+000000FFFF000000
+000000FFFF000000
+000000FFFF000000
+000000FFFF000000
+0000000000000000
+0000000000000000
+000000FFFF000000
+000000FFFF000000
+000000FFFF000000
+0000000000000000
+}
+
+skinparam componentArrowColor #black
+skinparam componentArrowFontColor #white
+skinparam component {
+    backgroundColor<<Port>> #00eb00
+    BorderColor<<Port>> #000000
+    backgroundColor<<Inner>> RosyBrown
+    BorderColor<<Inner>> #000000
+}
+
+package Core{
+[de.ragedev.example.core.api] <<Port>> 
+[de.ragedev.example.core] <<Inner>>
+}
+
+package UI{
+[de.ragedev.example.ui] <<Inner>>
+}
+
+[de.ragedev.example.ui]-->[de.ragedev.example.core]:<$error>
+[de.ragedev.example.ui]-->[de.ragedev.example.core.api]
+legend right
+**Note:**
+Forbidden dependencies are labeled with a <$error>.
+endlegend
+@enduml
