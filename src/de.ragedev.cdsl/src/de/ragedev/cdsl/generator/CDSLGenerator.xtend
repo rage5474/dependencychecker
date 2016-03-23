@@ -31,15 +31,37 @@ class CDSLGenerator extends AbstractGenerator {
 				fsa.getURI(nextDValidator.valName + ".dependencychecker"));
 			nextDValidator.generate(dependencyCheckerResource)
 			dependencyCheckerResource.save(saveProperties)
+			
+			val fileURI = nextDValidator.valName + ".uml"
+			val contents = nextDValidator.generateUml()
+			fsa.generateFile(fileURI, contents)
 		}
 
+	}
+
+	def String generateUml(DValidator validator) {
+		val result = '''
+		@startuml
+		«FOR nextComp : validator.refComponents»
+		«IF nextComp.notAllowedRef != null»
+		«FOR nextForbiddenComp : nextComp.notAllowedRef.units»[«nextComp.name»] -[#red]> [«nextForbiddenComp.name»]
+		«ENDFOR»
+		«ENDIF»
+		«ENDFOR»
+		@enduml
+		'''
+		
+		for (nextRefComp : validator.refComponents) {
+			println("Comp: " + nextRefComp.name)
+		}
+
+		return result
 	}
 
 	def void generate(DValidator validator, Resource dependencyCheckerResource) {
 		val checker = DependencycheckerFactory.eINSTANCE.createChecker
 
 		for (nextRefComp : validator.refComponents) {
-
 			val compDesc = DependencycheckerFactory.eINSTANCE.createComponentDescription
 			compDesc.name = nextRefComp.name
 
@@ -57,8 +79,8 @@ class CDSLGenerator extends AbstractGenerator {
 				}
 			}
 
-			for (notAllowedRef : nextRefComp.notAllowedRef) {
-				for (nextNotAllowedUnit : notAllowedRef.units) {
+			if(nextRefComp.notAllowedRef != null) {
+				for (nextNotAllowedUnit : nextRefComp.notAllowedRef.units) {
 					compDesc.forbiddenComponents.add(nextNotAllowedUnit.name)
 				}
 			}

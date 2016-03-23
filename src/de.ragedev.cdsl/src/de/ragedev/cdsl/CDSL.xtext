@@ -20,7 +20,7 @@ ComponentDescription:
 	'{'
 	(ports=Ports)?
 	(units=UnitElements)?
-	(notAllowedRef+=NotAllowedRef)?
+	(notAllowedRef=NotAllowedRef)?
 	'}';
 
 Ports:

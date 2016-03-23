@@ -17,8 +17,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="units" eType="#//UnitElements"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="notAllowedRef" upperBound="-1"
-        eType="#//NotAllowedRef" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="notAllowedRef" eType="#//NotAllowedRef"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Ports">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" unique="false" upperBound="-1"

@@ -135,11 +135,11 @@ public class CDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'{'
 		//	ports=Ports?
 		//	units=UnitElements?
-		//	notAllowedRef+=NotAllowedRef?
+		//	notAllowedRef=NotAllowedRef?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'comp' name=ID '{' ports=Ports? units=UnitElements? notAllowedRef+=NotAllowedRef? '}'
+		//'comp' name=ID '{' ports=Ports? units=UnitElements? notAllowedRef=NotAllowedRef? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'comp'
@@ -166,7 +166,7 @@ public class CDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//UnitElements
 		public RuleCall getUnitsUnitElementsParserRuleCall_4_0() { return cUnitsUnitElementsParserRuleCall_4_0; }
 		
-		//notAllowedRef+=NotAllowedRef?
+		//notAllowedRef=NotAllowedRef?
 		public Assignment getNotAllowedRefAssignment_5() { return cNotAllowedRefAssignment_5; }
 		
 		//NotAllowedRef
@@ -432,7 +432,7 @@ public class CDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'{'
 	//	ports=Ports?
 	//	units=UnitElements?
-	//	notAllowedRef+=NotAllowedRef?
+	//	notAllowedRef=NotAllowedRef?
 	//	'}';
 	public ComponentDescriptionElements getComponentDescriptionAccess() {
 		return pComponentDescription;

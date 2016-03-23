@@ -296,7 +296,7 @@ ruleComponentDescription returns [EObject current=null]
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getComponentDescriptionRule());
 					}
-					add(
+					set(
 						$current,
 						"notAllowedRef",
 						lv_notAllowedRef_5_0,

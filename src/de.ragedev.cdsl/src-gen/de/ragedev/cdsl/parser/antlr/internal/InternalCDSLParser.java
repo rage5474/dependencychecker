@@ -712,7 +712,7 @@ public class InternalCDSLParser extends AbstractInternalAntlrParser {
                     					if (current==null) {
                     						current = createModelElementForParent(grammarAccess.getComponentDescriptionRule());
                     					}
-                    					add(
+                    					set(
                     						current,
                     						"notAllowedRef",
                     						lv_notAllowedRef_5_0,

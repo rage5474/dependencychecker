@@ -68,7 +68,7 @@ public class CDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComponentDescription returns ComponentDescription
 	 *
 	 * Constraint:
-	 *     (name=ID ports=Ports? units=UnitElements? notAllowedRef+=NotAllowedRef?)
+	 *     (name=ID ports=Ports? units=UnitElements? notAllowedRef=NotAllowedRef?)
 	 */
 	protected void sequence_ComponentDescription(ISerializationContext context, ComponentDescription semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

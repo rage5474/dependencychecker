@@ -179,7 +179,7 @@ public interface CDSLPackage extends EPackage
   int COMPONENT_DESCRIPTION__UNITS = ABSTRACT_ENTRY_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Not Allowed Ref</b></em>' containment reference list.
+   * The feature id for the '<em><b>Not Allowed Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -416,10 +416,10 @@ public interface CDSLPackage extends EPackage
   EReference getComponentDescription_Units();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.ragedev.cdsl.cDSL.ComponentDescription#getNotAllowedRef <em>Not Allowed Ref</em>}'.
+   * Returns the meta object for the containment reference '{@link de.ragedev.cdsl.cDSL.ComponentDescription#getNotAllowedRef <em>Not Allowed Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Not Allowed Ref</em>'.
+   * @return the meta object for the containment reference '<em>Not Allowed Ref</em>'.
    * @see de.ragedev.cdsl.cDSL.ComponentDescription#getNotAllowedRef()
    * @see #getComponentDescription()
    * @generated
@@ -622,7 +622,7 @@ public interface CDSLPackage extends EPackage
     EReference COMPONENT_DESCRIPTION__UNITS = eINSTANCE.getComponentDescription_Units();
 
     /**
-     * The meta object literal for the '<em><b>Not Allowed Ref</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Not Allowed Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

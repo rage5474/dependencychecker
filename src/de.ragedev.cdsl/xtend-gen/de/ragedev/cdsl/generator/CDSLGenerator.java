@@ -20,10 +20,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
@@ -56,11 +58,56 @@ public class CDSLGenerator extends AbstractGenerator {
           final Resource dependencyCheckerResource = resourceSet.createResource(_uRI);
           this.generate(nextDValidator, dependencyCheckerResource);
           dependencyCheckerResource.save(this.saveProperties);
+          String _valName_1 = nextDValidator.getValName();
+          final String fileURI = (_valName_1 + ".uml");
+          final String contents = this.generateUml(nextDValidator);
+          fsa.generateFile(fileURI, contents);
         }
       }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  public String generateUml(final DValidator validator) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("@startuml");
+    _builder.newLine();
+    {
+      EList<ComponentDescription> _refComponents = validator.getRefComponents();
+      for(final ComponentDescription nextComp : _refComponents) {
+        {
+          NotAllowedRef _notAllowedRef = nextComp.getNotAllowedRef();
+          boolean _notEquals = (!Objects.equal(_notAllowedRef, null));
+          if (_notEquals) {
+            {
+              NotAllowedRef _notAllowedRef_1 = nextComp.getNotAllowedRef();
+              EList<ComponentDescription> _units = _notAllowedRef_1.getUnits();
+              for(final ComponentDescription nextForbiddenComp : _units) {
+                _builder.append("[");
+                String _name = nextComp.getName();
+                _builder.append(_name, "");
+                _builder.append("] -[#red]> [");
+                String _name_1 = nextForbiddenComp.getName();
+                _builder.append(_name_1, "");
+                _builder.append("]");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+      }
+    }
+    _builder.append("@enduml");
+    _builder.newLine();
+    final String result = _builder.toString();
+    EList<ComponentDescription> _refComponents_1 = validator.getRefComponents();
+    for (final ComponentDescription nextRefComp : _refComponents_1) {
+      String _name_2 = nextRefComp.getName();
+      String _plus = ("Comp: " + _name_2);
+      InputOutput.<String>println(_plus);
+    }
+    return result;
   }
   
   public void generate(final DValidator validator, final Resource dependencyCheckerResource) {
@@ -96,9 +143,11 @@ public class CDSLGenerator extends AbstractGenerator {
             _ports_2.add(_createCompItemDesc_1);
           }
         }
-        EList<NotAllowedRef> _notAllowedRef = nextRefComp.getNotAllowedRef();
-        for (final NotAllowedRef notAllowedRef : _notAllowedRef) {
-          EList<ComponentDescription> _units_2 = notAllowedRef.getUnits();
+        NotAllowedRef _notAllowedRef = nextRefComp.getNotAllowedRef();
+        boolean _notEquals_2 = (!Objects.equal(_notAllowedRef, null));
+        if (_notEquals_2) {
+          NotAllowedRef _notAllowedRef_1 = nextRefComp.getNotAllowedRef();
+          EList<ComponentDescription> _units_2 = _notAllowedRef_1.getUnits();
           for (final ComponentDescription nextNotAllowedUnit : _units_2) {
             EList<String> _forbiddenComponents = compDesc.getForbiddenComponents();
             String _name_1 = nextNotAllowedUnit.getName();

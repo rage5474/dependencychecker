@@ -9,20 +9,13 @@ import de.ragedev.cdsl.cDSL.NotAllowedRef;
 import de.ragedev.cdsl.cDSL.Ports;
 import de.ragedev.cdsl.cDSL.UnitElements;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -83,14 +76,14 @@ public class ComponentDescriptionImpl extends AbstractEntryImpl implements Compo
   protected UnitElements units;
 
   /**
-   * The cached value of the '{@link #getNotAllowedRef() <em>Not Allowed Ref</em>}' containment reference list.
+   * The cached value of the '{@link #getNotAllowedRef() <em>Not Allowed Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getNotAllowedRef()
    * @generated
    * @ordered
    */
-  protected EList<NotAllowedRef> notAllowedRef;
+  protected NotAllowedRef notAllowedRef;
 
   /**
    * <!-- begin-user-doc -->
@@ -237,13 +230,47 @@ public class ComponentDescriptionImpl extends AbstractEntryImpl implements Compo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<NotAllowedRef> getNotAllowedRef()
+  public NotAllowedRef getNotAllowedRef()
   {
-    if (notAllowedRef == null)
-    {
-      notAllowedRef = new EObjectContainmentEList<NotAllowedRef>(NotAllowedRef.class, this, CDSLPackage.COMPONENT_DESCRIPTION__NOT_ALLOWED_REF);
-    }
     return notAllowedRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetNotAllowedRef(NotAllowedRef newNotAllowedRef, NotificationChain msgs)
+  {
+    NotAllowedRef oldNotAllowedRef = notAllowedRef;
+    notAllowedRef = newNotAllowedRef;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CDSLPackage.COMPONENT_DESCRIPTION__NOT_ALLOWED_REF, oldNotAllowedRef, newNotAllowedRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setNotAllowedRef(NotAllowedRef newNotAllowedRef)
+  {
+    if (newNotAllowedRef != notAllowedRef)
+    {
+      NotificationChain msgs = null;
+      if (notAllowedRef != null)
+        msgs = ((InternalEObject)notAllowedRef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CDSLPackage.COMPONENT_DESCRIPTION__NOT_ALLOWED_REF, null, msgs);
+      if (newNotAllowedRef != null)
+        msgs = ((InternalEObject)newNotAllowedRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CDSLPackage.COMPONENT_DESCRIPTION__NOT_ALLOWED_REF, null, msgs);
+      msgs = basicSetNotAllowedRef(newNotAllowedRef, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CDSLPackage.COMPONENT_DESCRIPTION__NOT_ALLOWED_REF, newNotAllowedRef, newNotAllowedRef));
   }
 
   /**
@@ -261,7 +288,7 @@ public class ComponentDescriptionImpl extends AbstractEntryImpl implements Compo
       case CDSLPackage.COMPONENT_DESCRIPTION__UNITS:
         return basicSetUnits(null, msgs);
       case CDSLPackage.COMPONENT_DESCRIPTION__NOT_ALLOWED_REF:
-        return ((InternalEList<?>)getNotAllowedRef()).basicRemove(otherEnd, msgs);
+        return basicSetNotAllowedRef(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -293,7 +320,6 @@ public class ComponentDescriptionImpl extends AbstractEntryImpl implements Compo
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -309,8 +335,7 @@ public class ComponentDescriptionImpl extends AbstractEntryImpl implements Compo
         setUnits((UnitElements)newValue);
         return;
       case CDSLPackage.COMPONENT_DESCRIPTION__NOT_ALLOWED_REF:
-        getNotAllowedRef().clear();
-        getNotAllowedRef().addAll((Collection<? extends NotAllowedRef>)newValue);
+        setNotAllowedRef((NotAllowedRef)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -336,7 +361,7 @@ public class ComponentDescriptionImpl extends AbstractEntryImpl implements Compo
         setUnits((UnitElements)null);
         return;
       case CDSLPackage.COMPONENT_DESCRIPTION__NOT_ALLOWED_REF:
-        getNotAllowedRef().clear();
+        setNotAllowedRef((NotAllowedRef)null);
         return;
     }
     super.eUnset(featureID);
@@ -359,7 +384,7 @@ public class ComponentDescriptionImpl extends AbstractEntryImpl implements Compo
       case CDSLPackage.COMPONENT_DESCRIPTION__UNITS:
         return units != null;
       case CDSLPackage.COMPONENT_DESCRIPTION__NOT_ALLOWED_REF:
-        return notAllowedRef != null && !notAllowedRef.isEmpty();
+        return notAllowedRef != null;
     }
     return super.eIsSet(featureID);
   }
