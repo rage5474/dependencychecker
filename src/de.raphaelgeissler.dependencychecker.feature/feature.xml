@@ -2,7 +2,7 @@
 <feature
       id="de.raphaelgeissler.dependencychecker.feature"
       label="DependencyChecker Feature"
-      version="1.0.1.qualifier">
+      version="1.0.0.qualifier">
 
    <copyright>
       (c) 2015, Raphael Geissler

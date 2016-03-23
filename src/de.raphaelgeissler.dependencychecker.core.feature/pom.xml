@@ -8,5 +8,4 @@
     <relativePath>../de.raphaelgeissler.dependencychecker.tycho.parent</relativePath>
   </parent>
   <packaging>eclipse-feature</packaging>
-  <version>1.0.1-SNAPSHOT</version>
 </project>

@@ -50,7 +50,7 @@
    </plugins>
 
    <features>
-      <feature id="de.raphaelgeissler.dependencychecker.core.feature" version="1.0.1.qualifier"/>
+      <feature id="de.raphaelgeissler.dependencychecker.core.feature"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.e4.rcp"/>
