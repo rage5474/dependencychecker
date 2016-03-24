@@ -1,0 +1,2 @@
+language: java
+script: mvn -f src/de.raphaelgeissler.dependencychecker.tycho.aggregator package
