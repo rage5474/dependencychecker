@@ -69,13 +69,21 @@ public class ManifestDataStore {
 		try (InputStream is = new FileInputStream(file)) {
 			Manifest manifest = new Manifest(is);
 
+			System.out.println("TRACE: Parsing manifest: " + file.getAbsolutePath());
+			
 			String bundleID = parseBundleID(manifest);
-			List<String> requireBundles = parseRequireBundleAttribute(manifest);
-			List<String> importPackages = parseImportPackageAttribute(manifest);
-			Map<String, List<Integer>> lineNumbers = getLineNumber(Arrays.asList(REQUIRE_BUNDLE,IMPORT_PACKAGE),file);
-			
-			pluginDataMap.put(bundleID, new PluginData(bundleID, requireBundles, importPackages, getRequiredBundleLineNumber(lineNumbers), getImportPackageLineNumber(lineNumbers)));
-			
+			if(bundleID != null)
+			{
+				List<String> requireBundles = parseRequireBundleAttribute(manifest);
+				List<String> importPackages = parseImportPackageAttribute(manifest);
+				Map<String, List<Integer>> lineNumbers = getLineNumber(Arrays.asList(REQUIRE_BUNDLE,IMPORT_PACKAGE),file);
+				
+				pluginDataMap.put(bundleID, new PluginData(bundleID, requireBundles, importPackages, getRequiredBundleLineNumber(lineNumbers), getImportPackageLineNumber(lineNumbers)));
+			}
+			else
+			{
+				System.out.println("INFO: Ignoring manifest, because it has no symbolic name: " + file.getAbsolutePath());
+			}
 		} catch (IOException ex) {
 			throw ex;
 		}
@@ -98,7 +106,11 @@ public class ManifestDataStore {
 	}
 
 	private String parseBundleID(Manifest manifest) {
-		return manifest.getMainAttributes().getValue(BUNDLE_SYMBOLIC_NAME).split(";")[0];
+		String symbolicNameLine = manifest.getMainAttributes().getValue(BUNDLE_SYMBOLIC_NAME);
+		if(symbolicNameLine!= null)
+			return symbolicNameLine.split(";")[0];
+		else
+			return null;
 	}
 
 	private List<String> parseRequireBundleAttribute(Manifest manifest) {

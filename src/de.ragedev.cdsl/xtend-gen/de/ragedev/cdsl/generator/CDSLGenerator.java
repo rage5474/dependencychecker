@@ -73,38 +73,25 @@ public class CDSLGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("@startuml");
     _builder.newLine();
-    {
-      EList<ComponentDescription> _refComponents = validator.getRefComponents();
-      for(final ComponentDescription nextComp : _refComponents) {
-        {
-          NotAllowedRef _notAllowedRef = nextComp.getNotAllowedRef();
-          boolean _notEquals = (!Objects.equal(_notAllowedRef, null));
-          if (_notEquals) {
-            {
-              NotAllowedRef _notAllowedRef_1 = nextComp.getNotAllowedRef();
-              EList<ComponentDescription> _units = _notAllowedRef_1.getUnits();
-              for(final ComponentDescription nextForbiddenComp : _units) {
-                _builder.append("[");
-                String _name = nextComp.getName();
-                _builder.append(_name, "");
-                _builder.append("] -[#red]> [");
-                String _name_1 = nextForbiddenComp.getName();
-                _builder.append(_name_1, "");
-                _builder.append("]");
-                _builder.newLineIfNotEmpty();
-              }
-            }
-          }
-        }
-      }
-    }
+    _builder.append("�FOR nextComp : validator.refComponents�");
+    _builder.newLine();
+    _builder.append("�IF nextComp.notAllowedRef != null�");
+    _builder.newLine();
+    _builder.append("�FOR nextForbiddenComp : nextComp.notAllowedRef.units�[�nextComp.name�] -[#red]> [�nextForbiddenComp.name�]");
+    _builder.newLine();
+    _builder.append("�ENDFOR�");
+    _builder.newLine();
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("�ENDFOR�");
+    _builder.newLine();
     _builder.append("@enduml");
     _builder.newLine();
     final String result = _builder.toString();
-    EList<ComponentDescription> _refComponents_1 = validator.getRefComponents();
-    for (final ComponentDescription nextRefComp : _refComponents_1) {
-      String _name_2 = nextRefComp.getName();
-      String _plus = ("Comp: " + _name_2);
+    EList<ComponentDescription> _refComponents = validator.getRefComponents();
+    for (final ComponentDescription nextRefComp : _refComponents) {
+      String _name = nextRefComp.getName();
+      String _plus = ("Comp: " + _name);
       InputOutput.<String>println(_plus);
     }
     return result;

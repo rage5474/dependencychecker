@@ -24,7 +24,7 @@ public class DValidationResultToPlantUMLTransformerTest {
 				.comp(new DValCompBuilder("Core").id("de.ragedev.example.core*").port("de.ragedev.example.core.api"))
 				.comp(new DValCompBuilder("UI").id("de.ragedev.example.ui*")).build();
 
-		String plantUmlString = DValidationResultToPlantUMLTransformer.transform(result, checker);
+		String plantUmlString = DValidationResultToPlantUMLTransformer.transform(result, checker, new FullPlantUMLGenerator());
 		
 		String expectedResult = readFile("files/result.iuml", Charset.defaultCharset());
 		
