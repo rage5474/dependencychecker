@@ -23,11 +23,12 @@
   </target>
   
   <target name="set.gdrive.path.linux" if="isLinux">
-    <exec dir="." executable="/bin/sh" outputproperty="command.ouput">
+    <exec dir="." executable="/bin/sh" outputproperty="command.output">
       <arg line="/c uname -m"/>
     </exec>
+  	<echo message="${command.output}" />
     <if>
-      <contains string="${command.ouput}" substring="_64"/>
+      <contains string="${command.output}" substring="_64"/>
     <then>
       <property name="gdrive.path" location="${project.dir}/tools/gdrive/linux/x86_64/gdrive" />
     </then>

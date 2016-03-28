@@ -1,3 +1,4 @@
 language: java
-before_install: openssl aes-256-cbc -K $encrypted_64ff1dbea517_key -iv $encrypted_64ff1dbea517_iv -in src/de.ragedev.dval.releng.deploy/token_v2.json.enc -out src/de.ragedev.dval.releng.deploy/token_v2.json -d
-script: mvn -f src/de.raphaelgeissler.dependencychecker.tycho.aggregator package -Pupload
+# before_install: openssl aes-256-cbc -K $encrypted_64ff1dbea517_key -iv $encrypted_64ff1dbea517_iv -in src/de.ragedev.dval.releng.deploy/token_v2.json.enc -out src/de.ragedev.dval.releng.deploy/token_v2.json -d
+# script: mvn -f src/de.raphaelgeissler.dependencychecker.tycho.aggregator package -Pupload
+script: ant -f src/de.ragedev.dval.releng.deploy/build.xml 
