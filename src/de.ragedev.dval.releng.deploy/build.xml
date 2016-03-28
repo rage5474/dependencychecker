@@ -23,8 +23,9 @@
   </target>
   
   <target name="set.gdrive.path.linux" if="isLinux">
-    <exec dir="." executable="/bin/sh" outputproperty="command.output">
-      <arg line="/c uname -m"/>
+    <exec dir="." executable="/bin/bash" outputproperty="command.output">
+      <arg value="uname"/>
+      <arg value="-m"/>
     </exec>
   	<echo message="${command.output}" />
     <if>
