@@ -1,0 +1,84 @@
+<project default="run.gdrive">
+  
+  <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+    <classpath>
+      <pathelement location="tools/ant-contrib/ant-contrib-1.0b3.jar"/>
+    </classpath>
+  </taskdef>
+
+  <condition property="isWindows">
+    <os family="windows" />
+  </condition>
+
+  <condition property="isLinux">
+    <os family="unix" />
+  </condition>
+  
+  <target name="set.gdrive.path.windows" if="isWindows">
+    <property name="gdrive.path" location="tools/gdrive/windows/x86_64/gdrive.exe" />
+  </target>
+  
+  <target name="set.gdrive.path.linux" if="isLinux">
+    <exec dir="." executable="/bin/sh" outputproperty="command.ouput">
+      <arg line="/c uname -m"/>
+    </exec>
+    <if>
+      <contains string="${command.ouput}" substring="_64"/>
+    <then>
+      <property name="gdrive.path" location="tools/gdrive/linux/x86_64/gdrive" />
+    </then>
+    <else>
+      <property name="gdrive.path" location="tools/gdrive/linux/x86/gdrive" />
+    </else>
+    </if>
+  </target>
+
+  <target name="set.gdrive.path" depends="set.gdrive.path.windows,set.gdrive.path.linux">
+    <echo message="${gdrive.path}"/>
+  </target>
+
+  <target name="check.gdrive.config.installed"> 
+    <condition property="gdrive.config.not.installed">    
+      <not>
+        <available file="${user.home}/.gdrive/token_v2.json" />
+      </not>
+    </condition>
+  </target>
+
+  <target name="install.gdrive.config" depends="check.gdrive.config.installed" if="gdrive.config.not.installed">
+    <mkdir dir="${user.home}/.gdrive" />
+    <copy file="token_v2.json" tofile="${user.home}/.gdrive/token_v2.json"/>
+    <exec dir="." executable="/bin/sh">
+      <arg line="${gdrive.path} list"/>
+    </exec>
+  </target>
+
+  <target name="run.gdrive" depends="set.gdrive.path, install.gdrive.config">
+    <tempfile property="temp.file" destDir="${java.io.tmpdir}" prefix="build"/>
+    <mkdir dir="${temp.file}/content" />
+    <!-- Download remote update-site -->
+    <exec dir="." executable="${gdrive.path}">
+      <arg line="sync download 0BzgxECnugKH8V05YekdmbVNWNEU ${temp.file}/content"/>
+    </exec>
+    <!-- Delete local update-site -->
+    <delete dir="${temp.file}/content/releases/latest/update-site" />
+    <mkdir dir="${temp.file}/content/releases/latest/update-site" />
+    <!-- Delete remote update-site -->
+    <exec dir="." executable="${gdrive.path}">
+      <arg line="sync upload --delete-extraneous ${temp.file}/content 0BzgxECnugKH8V05YekdmbVNWNEU"/>
+    </exec>
+    <copy todir="${temp.file}/content/releases/latest/update-site">  
+      <fileset dir="src/de.raphaelgeissler.dependencychecker.tycho.updatesite/target/repository" includes="**"/>  
+    </copy>
+    <tstamp>
+      <format property="TODAY_DE" pattern="HH:mm:ss:sss zzz" locale="en,UK"/>
+    </tstamp>
+    <echo message="Update-Site uploaded on ${TODAY_DE}." file="${temp.file}/content/releases/latest/update-site/index.html" />
+    <!-- Upload local update-site -->
+    <exec dir="." executable="${gdrive.path}">
+      <arg line="sync upload --delete-extraneous ${temp.file}/content 0BzgxECnugKH8V05YekdmbVNWNEU"/>
+    </exec>
+    
+  </target>
+
+</project>
