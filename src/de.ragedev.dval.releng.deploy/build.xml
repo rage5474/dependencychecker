@@ -23,8 +23,7 @@
   </target>
   
   <target name="set.gdrive.path.linux" if="isLinux">
-    <exec dir="." executable="/bin/bash" outputproperty="command.output">
-      <arg value="uname"/>
+    <exec dir="." executable="/bin/uname" outputproperty="command.output">
       <arg value="-m"/>
     </exec>
   	<echo message="${command.output}" />
