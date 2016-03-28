@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rage5474/dependencychecker.svg?branch=master)](https://travis-ci.org/rage5474/dependencychecker)
+
 ## Eclipse Feature - DependencyChecker + Component DSL (CDSL)
 
 ### When does this Eclipse Feature help you?
