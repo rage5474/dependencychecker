@@ -36,7 +36,7 @@
       <property name="gdrive.path" location="${project.dir}/tools/gdrive/linux/x86/gdrive" />
     </else>
     </if>
-  	<property name="config.path" location="{user.home}/.gdrive/token_v2.json" />
+  	<property name="config.path" location="${user.home}/.gdrive/token_v2.json" />
   	<exec dir="." executable="/bin/chmod">
   	  <arg line="755 ${gdrive.path}"/>
   	</exec>
