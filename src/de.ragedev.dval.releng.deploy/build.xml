@@ -1,4 +1,6 @@
 <project default="run.gdrive">
+  <property name="base.dir" location=".." />
+  <property name="project.dir" value="${base.dir}/de.ragedev.dval.releng.deploy" />
   
   <taskdef resource="net/sf/antcontrib/antcontrib.properties">
     <classpath>
@@ -15,7 +17,9 @@
   </condition>
   
   <target name="set.gdrive.path.windows" if="isWindows">
-    <property name="gdrive.path" location="tools/gdrive/windows/x86_64/gdrive.exe" />
+    <property name="gdrive.path" value="${project.dir}/tools/gdrive/windows/x86_64/gdrive.exe" />
+  	<property name="config.path" location="${user.home}/AppData/Roaming/.gdrive/token_v2.json" />
+  	<echo message="${config.path}" />
   </target>
   
   <target name="set.gdrive.path.linux" if="isLinux">
@@ -25,29 +29,30 @@
     <if>
       <contains string="${command.ouput}" substring="_64"/>
     <then>
-      <property name="gdrive.path" location="tools/gdrive/linux/x86_64/gdrive" />
+      <property name="gdrive.path" location="${project.dir}/tools/gdrive/linux/x86_64/gdrive" />
     </then>
     <else>
-      <property name="gdrive.path" location="tools/gdrive/linux/x86/gdrive" />
+      <property name="gdrive.path" location="${project.dir}/tools/gdrive/linux/x86/gdrive" />
     </else>
     </if>
+  	<property name="config.path" location="{user.home}/.gdrive/token_v2.json" />
   </target>
 
   <target name="set.gdrive.path" depends="set.gdrive.path.windows,set.gdrive.path.linux">
     <echo message="${gdrive.path}"/>
   </target>
-
+	
   <target name="check.gdrive.config.installed"> 
-    <condition property="gdrive.config.not.installed">    
-      <not>
-        <available file="${user.home}/.gdrive/token_v2.json" />
-      </not>
-    </condition>
+  	<condition property="gdrive.config.not.installed">    
+	  <not>
+	    <available file="${config.path}" />
+	  </not>
+	</condition>
   </target>
 
   <target name="install.gdrive.config" depends="check.gdrive.config.installed" if="gdrive.config.not.installed">
     <mkdir dir="${user.home}/.gdrive" />
-    <copy file="token_v2.json" tofile="${user.home}/.gdrive/token_v2.json"/>
+    <copy file="${project.dir}/token_v2.json" tofile="${config.path}"/>
     <exec dir="." executable="/bin/sh">
       <arg line="${gdrive.path} list"/>
     </exec>
@@ -68,7 +73,7 @@
       <arg line="sync upload --delete-extraneous ${temp.file}/content 0BzgxECnugKH8V05YekdmbVNWNEU"/>
     </exec>
     <copy todir="${temp.file}/content/releases/latest/update-site">  
-      <fileset dir="src/de.raphaelgeissler.dependencychecker.tycho.updatesite/target/repository" includes="**"/>  
+      <fileset dir="../de.raphaelgeissler.dependencychecker.tycho.updatesite/target/repository" includes="**"/>  
     </copy>
     <tstamp>
       <format property="TODAY_DE" pattern="HH:mm:ss:sss zzz" locale="en,UK"/>
