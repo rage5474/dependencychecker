@@ -54,8 +54,8 @@
   <target name="install.gdrive.config" depends="check.gdrive.config.installed" if="gdrive.config.not.installed">
     <mkdir dir="${user.home}/.gdrive" />
     <copy file="${project.dir}/token_v2.json" tofile="${config.path}"/>
-    <exec dir="." executable="/bin/sh">
-      <arg line="${gdrive.path} list"/>
+    <exec dir="." executable="${gdrive.path}">
+      <arg line="list"/>
     </exec>
   </target>
 
