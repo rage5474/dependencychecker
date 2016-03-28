@@ -16,8 +16,16 @@ import de.raphaelgeissler.dependencychecker.core.api.DependencyValidationResultM
 
 public class FullPlantUMLGenerator implements PlantUmlGenerator {
 
+	private DependencyValidationResult result;
+	private Checker checker;
+
+	public FullPlantUMLGenerator(DependencyValidationResult result, Checker checker) {
+		this.result = result;
+		this.checker = checker;
+	}
+	
 	@Override
-	public String generatePackagePlantUMLString(DependencyValidationResult result, Checker checker) {
+	public String generatePackagePlantUMLString() {
 		String middle = "";
 
 		Map<String, Set<PluginInfo>> pluginInfos = new HashMap<String, Set<PluginInfo>>();
@@ -45,9 +53,9 @@ public class FullPlantUMLGenerator implements PlantUmlGenerator {
 	private void addPluginInfoToRightPackage(Checker checker, Map<String, Set<PluginInfo>> pluginInfos,
 			String pluginId) {
 		PluginInfo pluginInfo = getPluginInfo(pluginId, checker);
-		if (!pluginInfos.containsKey(pluginInfo.getPackageName()))
-			pluginInfos.put(pluginInfo.getPackageName(), new TreeSet<PluginInfo>());
-		pluginInfos.get(pluginInfo.getPackageName()).add(pluginInfo);
+		if (!pluginInfos.containsKey(pluginInfo.getPackageInfo().getName()))
+			pluginInfos.put(pluginInfo.getPackageInfo().getName(), new TreeSet<PluginInfo>());
+		pluginInfos.get(pluginInfo.getPackageInfo().getName()).add(pluginInfo);
 	}
 	
 	private PluginInfo getPluginInfo(String pluginId, Checker checker) {
@@ -72,7 +80,7 @@ public class FullPlantUMLGenerator implements PlantUmlGenerator {
 	}
 
 	@Override
-	public String generateDependenciesPlantUMLString(DependencyValidationResult result) {
+	public String generateDependenciesPlantUMLString() {
 		String dependenciesPlantUMLString = "";
 
 		for (DependencyValidationResultMessage nextMessage : result.getResultMessages()) {

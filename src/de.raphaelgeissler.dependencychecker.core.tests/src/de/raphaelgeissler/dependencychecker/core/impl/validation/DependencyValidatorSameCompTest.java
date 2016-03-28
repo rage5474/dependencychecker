@@ -52,5 +52,23 @@ public class DependencyValidatorSameCompTest extends AbstractDependencyCheckerCo
 		assertTrue(result.wasSuccessful());
 	}
 	
+	@Test
+	public void ignoringImportPackage() throws Exception {
+		Checker checker = new DValBuilder("TestConfig")
+				.comp(new DValCompBuilder("Core").id("de.ragedev.example.core.*").forbidden("UI")).comp(new DValCompBuilder("UI").id("de.ragedev.example.ui.*")).build();
+
+		Manifest manifestUiPlugin1 = new ManifestBuilder().symbolicName("de.ragedev.example.ui.plugin1").build();
+		Manifest manifestCorePlugin1 = new ManifestBuilder().symbolicName("de.ragedev.example.core.plugin1")
+				.addImportPackage("de.ragedev.example.ui.plugin1").build();
+
+		ManifestDataStore store = new ManifestDataStore();
+		store.parseManifests(Arrays.asList(manifestUiPlugin1, manifestCorePlugin1));
+
+		DependencyValidator dependencyValidator = new DependencyValidatorImpl(checker, store, false);
+		DependencyValidationResult result = dependencyValidator.validate();
+
+		assertTrue(result.wasSuccessful());
+	}
+	
 
 }

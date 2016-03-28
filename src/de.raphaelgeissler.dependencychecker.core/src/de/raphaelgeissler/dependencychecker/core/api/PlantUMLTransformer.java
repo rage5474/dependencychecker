@@ -14,7 +14,7 @@ public class PlantUMLTransformer {
 		final DependencyCheckerConfig config = new DependencyCheckerConfig();
 		if(config.loadData(pathToCheckerConfig))
 		{
-			String plantUMLString = DValidationResultToPlantUMLTransformer.transform(result, config.getChecker(), new FullPlantUMLGenerator());
+			String plantUMLString = DValidationResultToPlantUMLTransformer.transform(new FullPlantUMLGenerator(result, config.getChecker()));
 			try(  PrintWriter out = new PrintWriter( pathToResultFile )  ){
 			    out.println( plantUMLString );
 			} catch (FileNotFoundException e) {

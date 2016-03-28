@@ -13,12 +13,18 @@ import de.raphaelgeissler.dependencychecker.core.impl.manifest.ManifestDataStore
 
 public class DependencyValidatorImpl implements DependencyValidator {
 
-	private ManifestDataStore manifestDataStore;
-	private Checker checker;
+	private final Checker checker;
+	private final ManifestDataStore manifestDataStore;
+	private final boolean importPackageActive;
 
 	public DependencyValidatorImpl(Checker checker, ManifestDataStore manifestDataStore) {
+		this(checker, manifestDataStore, false);
+	}
+
+	public DependencyValidatorImpl(Checker checker, ManifestDataStore manifestDataStore, boolean importPackageActive) {
 		this.checker = checker;
 		this.manifestDataStore = manifestDataStore;
+		this.importPackageActive = importPackageActive;
 	}
 
 	@Override
@@ -28,7 +34,8 @@ public class DependencyValidatorImpl implements DependencyValidator {
 
 		for (String nextPluginToValidate : manifestDataStore.getIDs()) {
 			validateRequiredBundles(result, nextPluginToValidate);
-			validateImportPackages(result, nextPluginToValidate);
+			if (importPackageActive)
+				validateImportPackages(result, nextPluginToValidate);
 		}
 
 		return result;

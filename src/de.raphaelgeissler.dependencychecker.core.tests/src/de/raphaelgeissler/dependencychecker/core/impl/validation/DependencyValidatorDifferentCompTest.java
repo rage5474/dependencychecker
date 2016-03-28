@@ -47,7 +47,7 @@ public class DependencyValidatorDifferentCompTest extends AbstractDependencyChec
 		ManifestDataStore store = new ManifestDataStore();
 		store.parseManifests(Arrays.asList(manifestCorePlugin1, manifestUiPlugin1));
 
-		DependencyValidator dependencyValidator = new DependencyValidatorImpl(checker, store);
+		DependencyValidator dependencyValidator = new DependencyValidatorImpl(checker, store, true);
 		DependencyValidationResult result = dependencyValidator.validate();
 
 		assertFalse(result.wasSuccessful());

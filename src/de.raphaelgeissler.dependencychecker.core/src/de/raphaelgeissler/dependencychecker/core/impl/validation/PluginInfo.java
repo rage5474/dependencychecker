@@ -4,11 +4,17 @@ public class PluginInfo implements Comparable<PluginInfo>{
 
 	private final String pluginId;
 	
-	private final String packageName;
+	private final PackageInfo packageName;
 	
 	private final boolean isPort;
 	
 	public PluginInfo(final String pluginId, String packageName, boolean isPort) {
+		this.pluginId = pluginId;
+		this.packageName = new PackageInfo(packageName);
+		this.isPort = isPort;
+	}
+	
+	public PluginInfo(final String pluginId, PackageInfo packageName, boolean isPort) {
 		this.pluginId = pluginId;
 		this.packageName = packageName;
 		this.isPort = isPort;
@@ -18,7 +24,7 @@ public class PluginInfo implements Comparable<PluginInfo>{
 		return pluginId;
 	}
 
-	public String getPackageName() {
+	public PackageInfo getPackageInfo() {
 		return packageName;
 	}
 
@@ -28,7 +34,7 @@ public class PluginInfo implements Comparable<PluginInfo>{
 	
 	@Override
 	public int compareTo(PluginInfo arg0) {
-		int packageNameCompareResult =  packageName.compareTo(arg0.packageName);
+		int packageNameCompareResult =  packageName.getName().compareTo(arg0.packageName.getName());
 		if(packageNameCompareResult != 0)
 			return packageNameCompareResult;
 		if(isPort && !arg0.isPort)

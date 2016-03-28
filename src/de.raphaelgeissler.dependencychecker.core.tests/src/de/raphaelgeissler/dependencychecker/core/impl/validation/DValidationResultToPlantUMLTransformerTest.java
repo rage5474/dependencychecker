@@ -13,7 +13,7 @@ import de.raphaelgeissler.dependencychecker.Checker;
 public class DValidationResultToPlantUMLTransformerTest {
 
 	@Test
-	public void simpleTest() throws Exception {
+	public void fullPlantUmlGenerator() throws Exception {
 		DependencyValidationResultImpl result = new DependencyValidationResultImpl();
 		result.addResultMessage(new DependencyValidationResultMessageImpl(false, 0, "de.ragedev.example.core",
 				"de.ragedev.example.ui"));
@@ -24,7 +24,7 @@ public class DValidationResultToPlantUMLTransformerTest {
 				.comp(new DValCompBuilder("Core").id("de.ragedev.example.core*").port("de.ragedev.example.core.api"))
 				.comp(new DValCompBuilder("UI").id("de.ragedev.example.ui*")).build();
 
-		String plantUmlString = DValidationResultToPlantUMLTransformer.transform(result, checker, new FullPlantUMLGenerator());
+		String plantUmlString = DValidationResultToPlantUMLTransformer.transform(new FullPlantUMLGenerator(result, checker));
 		
 		String expectedResult = readFile("files/result.iuml", Charset.defaultCharset());
 		

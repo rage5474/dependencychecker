@@ -5,7 +5,7 @@ import de.raphaelgeissler.dependencychecker.core.api.DependencyValidationResult;
 
 public class DValidationResultToPlantUMLTransformer {
 
-	public static String transform(DependencyValidationResult result, Checker checker, PlantUmlGenerator plantUmlGenerator) {
+	public static String transform(PlantUmlGenerator plantUmlGenerator) {
 
 		String start = "@startuml\n";
 
@@ -39,9 +39,9 @@ public class DValidationResultToPlantUMLTransformer {
 				+ "}\n";
 		//@formatter:on
 
-		String packagesPlantUMLString = plantUmlGenerator.generatePackagePlantUMLString(result, checker);
+		String packagesPlantUMLString = plantUmlGenerator.generatePackagePlantUMLString();
 
-		String dependenciesPlantUMLString = plantUmlGenerator.generateDependenciesPlantUMLString(result);
+		String dependenciesPlantUMLString = plantUmlGenerator.generateDependenciesPlantUMLString();
 
 		//@formatter:off
 		String legend = ""
