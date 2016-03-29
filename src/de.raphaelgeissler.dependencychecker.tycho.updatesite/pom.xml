@@ -10,37 +10,5 @@
 		<relativePath>../de.raphaelgeissler.dependencychecker.tycho.parent</relativePath>
 	</parent>
 	<packaging>eclipse-repository</packaging>
-	<profiles>
-		<profile>
-			<id>upload</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<version>1.8</version>
-						<executions>
-							<execution>
-								<id>deploy-repository</id>
-								<phase>package</phase>
-								<configuration>
-									<target>
-										<ant antfile="../de.ragedev.dval.releng.deploy/build.xml">
-										</ant>
-									</target>
-								</configuration>
-								<goals>
-									<goal>run</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+	
 </project>
