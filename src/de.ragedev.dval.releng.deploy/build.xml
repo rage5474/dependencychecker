@@ -90,7 +90,7 @@
     <tstamp>
       <format property="TODAY_DE" pattern="HH:mm:ss:sss zzz" locale="de,DE"/>
     </tstamp>
-    <echo message="Products uploaded on ${TODAY_DE}." file="${dest.product.dir}/index.html" />
+    <echo message="Products uploaded on ${TODAY_DE}." file="${dest.product.dir}/info.html" />
     <!-- Upload local update-site -->
     <exec dir="." executable="${gdrive.path}">
       <arg line="sync upload --delete-extraneous ${dest.root.dir} 0BzgxECnugKH8V05YekdmbVNWNEU"/>
