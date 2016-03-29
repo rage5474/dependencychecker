@@ -61,28 +61,39 @@
 
   <target name="run.gdrive" depends="set.gdrive.path, install.gdrive.config">
     <tempfile property="temp.file" destDir="${java.io.tmpdir}" prefix="build"/>
-    <mkdir dir="${temp.file}/content" />
+  	<property name="dest.root.dir" location="${temp.file}/content" />
+  	<property name="dest.updatesite.dir" location="${dest.root.dir}/dval/snapshots/latest/update-site" />
+  	<property name="dest.product.dir" location="${dest.root.dir}/dval/snapshots/latest/product" />
+    <mkdir dir="${dest.root.dir}" />
     <!-- Download remote update-site -->
     <exec dir="." executable="${gdrive.path}">
-      <arg line="sync download 0BzgxECnugKH8V05YekdmbVNWNEU ${temp.file}/content"/>
+      <arg line="sync download 0BzgxECnugKH8V05YekdmbVNWNEU ${dest.root.dir}"/>
     </exec>
     <!-- Delete local update-site -->
-    <delete dir="${temp.file}/content/releases/latest/update-site" />
-    <mkdir dir="${temp.file}/content/releases/latest/update-site" />
+    <delete dir="${dest.updatesite.dir}" />
+  	<delete dir="${dest.product.dir}" />
+    <mkdir dir="${dest.updatesite.dir}" />
+  	<mkdir dir="${dest.product.dir}" />
     <!-- Delete remote update-site -->
     <exec dir="." executable="${gdrive.path}">
-      <arg line="sync upload --delete-extraneous ${temp.file}/content 0BzgxECnugKH8V05YekdmbVNWNEU"/>
+      <arg line="sync upload --delete-extraneous ${dest.root.dir} 0BzgxECnugKH8V05YekdmbVNWNEU"/>
     </exec>
-    <copy todir="${temp.file}/content/releases/latest/update-site">  
+    <copy todir="${dest.updatesite.dir}">  
       <fileset dir="../de.raphaelgeissler.dependencychecker.tycho.updatesite/target/repository" includes="**"/>  
     </copy>
     <tstamp>
-      <format property="TODAY_DE" pattern="HH:mm:ss:sss zzz" locale="en,UK"/>
+      <format property="TODAY_DE" pattern="HH:mm:ss:sss zzz" locale="de,DE"/>
     </tstamp>
-    <echo message="Update-Site uploaded on ${TODAY_DE}." file="${temp.file}/content/releases/latest/update-site/index.html" />
+    <copy todir="${dest.product.dir}">  
+      <fileset dir="../de.raphaelgeissler.dependencychecker.tycho.releng.product/target/products" includes="*.zip"/>  
+    </copy>
+    <tstamp>
+      <format property="TODAY_DE" pattern="HH:mm:ss:sss zzz" locale="de,DE"/>
+    </tstamp>
+    <echo message="Products uploaded on ${TODAY_DE}." file="${dest.product.dir}/index.html" />
     <!-- Upload local update-site -->
     <exec dir="." executable="${gdrive.path}">
-      <arg line="sync upload --delete-extraneous ${temp.file}/content 0BzgxECnugKH8V05YekdmbVNWNEU"/>
+      <arg line="sync upload --delete-extraneous ${dest.root.dir} 0BzgxECnugKH8V05YekdmbVNWNEU"/>
     </exec>
     
   </target>
