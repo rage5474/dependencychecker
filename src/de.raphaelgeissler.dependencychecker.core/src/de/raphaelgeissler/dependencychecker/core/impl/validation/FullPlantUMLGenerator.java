@@ -18,10 +18,16 @@ public class FullPlantUMLGenerator implements PlantUmlGenerator {
 
 	private DependencyValidationResult result;
 	private Checker checker;
+	private boolean innerConnections;
 
 	public FullPlantUMLGenerator(DependencyValidationResult result, Checker checker) {
+		this(result, checker, true);
+	}
+	
+	public FullPlantUMLGenerator(DependencyValidationResult result, Checker checker, boolean innerConnections) {
 		this.result = result;
 		this.checker = checker;
+		this.innerConnections = innerConnections;
 	}
 	
 	@Override
@@ -85,13 +91,33 @@ public class FullPlantUMLGenerator implements PlantUmlGenerator {
 
 		for (DependencyValidationResultMessage nextMessage : result.getResultMessages()) {
 
-			String label = "";
-			if (!nextMessage.correct())
-				label = ":<$error>";
-
-			dependenciesPlantUMLString += "[" + nextMessage.getPluginId() + "]" + "-->" + "["
-					+ nextMessage.getDependencyPluginId() + "]" + label + "\n";
+			if(innerConnections)
+			{
+				dependenciesPlantUMLString = addDependencyToUmlString(dependenciesPlantUMLString, nextMessage);
+			}
+			else
+			{
+				PluginInfo nextPlugin = getPluginInfo(nextMessage.getPluginId(),checker);
+				PluginInfo dependentPlugin = getPluginInfo(nextMessage.getDependencyPluginId(),checker);
+				
+				if(!nextPlugin.getPackageInfo().equals(dependentPlugin.getPackageInfo()))
+				{
+					dependenciesPlantUMLString = addDependencyToUmlString(dependenciesPlantUMLString, nextMessage);
+				}
+			}
+			
 		}
+		return dependenciesPlantUMLString;
+	}
+
+	private String addDependencyToUmlString(String dependenciesPlantUMLString,
+			DependencyValidationResultMessage nextMessage) {
+		String label = "";
+		if (!nextMessage.correct())
+			label = ":<$error>";
+		
+		dependenciesPlantUMLString += "[" + nextMessage.getPluginId() + "]" + "-->" + "["
+				+ nextMessage.getDependencyPluginId() + "]" + label + "\n";
 		return dependenciesPlantUMLString;
 	}
 
