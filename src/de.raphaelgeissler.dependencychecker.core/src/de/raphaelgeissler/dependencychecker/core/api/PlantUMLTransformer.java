@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import de.raphaelgeissler.dependencychecker.core.impl.validation.DValidationResultToPlantUMLTransformer;
 import de.raphaelgeissler.dependencychecker.core.impl.validation.DependencyCheckerConfig;
 import de.raphaelgeissler.dependencychecker.core.impl.validation.FullPlantUMLGenerator;
+import de.raphaelgeissler.dependencychecker.core.impl.validation.PackageOnlyPlantUMLGenerator;
 
 public class PlantUMLTransformer {
 
@@ -14,7 +15,7 @@ public class PlantUMLTransformer {
 		final DependencyCheckerConfig config = new DependencyCheckerConfig();
 		if(config.loadData(pathToCheckerConfig))
 		{
-			String plantUMLString = DValidationResultToPlantUMLTransformer.transform(new FullPlantUMLGenerator(result, config.getChecker()));
+			String plantUMLString = DValidationResultToPlantUMLTransformer.transform(new PackageOnlyPlantUMLGenerator(result, config.getChecker()));
 			try(  PrintWriter out = new PrintWriter( pathToResultFile )  ){
 			    out.println( plantUMLString );
 			} catch (FileNotFoundException e) {
