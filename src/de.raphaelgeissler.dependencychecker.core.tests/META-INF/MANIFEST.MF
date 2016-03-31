@@ -5,4 +5,5 @@ Bundle-SymbolicName: de.raphaelgeissler.dependencychecker.core.tests
 Bundle-Version: 1.0.0.qualifier
 Fragment-Host: de.raphaelgeissler.dependencychecker.core;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: org.junit;bundle-version="4.12.0"
+Require-Bundle: org.junit;bundle-version="4.12.0",
+ org.eclipse.xtend.lib;bundle-version="2.9.1"

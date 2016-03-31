@@ -4,10 +4,16 @@ public class PluginDependency {
 
 	private PluginInfo sourcePlugin;
 	private PluginInfo destPlugin;
+	private boolean allowed;
 
 	public PluginDependency(final PluginInfo sourcePlugin, final PluginInfo destPlugin) {
+		this(sourcePlugin,destPlugin,true);
+	}
+
+	public PluginDependency(final PluginInfo sourcePlugin, final PluginInfo destPlugin, final boolean allowed) {
 		this.sourcePlugin = sourcePlugin;
 		this.destPlugin = destPlugin;
+		this.allowed = allowed;
 	}
 
 	public PluginInfo getSourcePlugin() {
@@ -16,6 +22,10 @@ public class PluginDependency {
 
 	public PluginInfo getDestPlugin() {
 		return destPlugin;
+	}
+
+	public boolean isAllowed() {
+		return allowed;
 	}
 
 	@Override
@@ -54,5 +64,4 @@ public class PluginDependency {
 		return true;
 	}
 
-	
 }

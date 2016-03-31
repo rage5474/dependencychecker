@@ -29,15 +29,20 @@ class UmlGeneratorTest {
 	def void noInnerConnection() throws Exception {
 		val generator = new OuterDependencyUMLGenerator(result, checker, false);
 
-		val generatedUmlString = generator.generatePackagePlantUMLString();
+		val generatedPackageString = generator.generatePackagePlantUMLString();
+		val generatedDependenciesString = generator.generateDependenciesPlantUMLString();
+		
+		val generatedUmlString = generatedPackageString + generatedDependenciesString
 
-		var String expectedUmlString = '''
+		val String expectedUmlString = '''
 		package Core{
 		[de.ragedev.example.core.api] <<Port>>
 		}
 		package UI{
 		[de.ragedev.example.ui] <<Inner>>
-		}'''
+		}
+		[de.ragedev.example.ui]-->[de.ragedev.example.core.api]
+		'''
 
 		assertEquals(expectedUmlString.replaceAll("\\s+", ""), generatedUmlString.replaceAll("\\s+", ""))
 	}
@@ -46,7 +51,10 @@ class UmlGeneratorTest {
 	def void innerConnection() throws Exception {
 		val generator = new OuterDependencyUMLGenerator(result, checker, true);
 
-		val generatedUmlString = generator.generatePackagePlantUMLString();
+		val generatedPackageString = generator.generatePackagePlantUMLString();
+		val generatedDependenciesString = generator.generateDependenciesPlantUMLString();
+		
+		val generatedUmlString = generatedPackageString + generatedDependenciesString
 
 		var String expectedUmlString = '''
 		package Core{
@@ -56,7 +64,11 @@ class UmlGeneratorTest {
 		}
 		package UI{
 		[de.ragedev.example.ui] <<Inner>>
-		}'''
+		}
+		
+		[de.ragedev.example.core.plugin.src]-->[de.ragedev.example.core.plugin.dest]
+		[de.ragedev.example.ui]-->[de.ragedev.example.core.api]
+		'''
 
 		assertEquals(expectedUmlString.replaceAll("\\s+", ""), generatedUmlString.replaceAll("\\s+", ""))
 	}

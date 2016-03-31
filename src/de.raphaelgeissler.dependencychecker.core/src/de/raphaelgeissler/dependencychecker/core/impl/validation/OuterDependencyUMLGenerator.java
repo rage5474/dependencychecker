@@ -40,9 +40,9 @@ public class OuterDependencyUMLGenerator implements PlantUmlGenerator {
 			PluginInfo dependentPlugin = getPluginInfo(nextMessage.getDependencyPluginId(), checker);
 
 			if (innerConnections) {
-				dependencies.add(new PluginDependency(nextPlugin, dependentPlugin));
+				dependencies.add(new PluginDependency(nextPlugin, dependentPlugin, nextMessage.correct()));
 			} else if (!nextPlugin.getPackageInfo().equals(dependentPlugin.getPackageInfo())) {
-				dependencies.add(new PluginDependency(nextPlugin, dependentPlugin));
+				dependencies.add(new PluginDependency(nextPlugin, dependentPlugin,  nextMessage.correct()));
 			}
 		}
 	}
@@ -110,21 +110,34 @@ public class OuterDependencyUMLGenerator implements PlantUmlGenerator {
 	public String generateDependenciesPlantUMLString() {
 		String dependenciesPlantUMLString = "";
 
-		for (DependencyValidationResultMessage nextMessage : result.getResultMessages()) {
-
-			if (innerConnections) {
-				dependenciesPlantUMLString = addDependencyToUmlString(dependenciesPlantUMLString, nextMessage);
-			} else {
-				PluginInfo nextPlugin = getPluginInfo(nextMessage.getPluginId(), checker);
-				PluginInfo dependentPlugin = getPluginInfo(nextMessage.getDependencyPluginId(), checker);
-
-				if (!nextPlugin.getPackageInfo().equals(dependentPlugin.getPackageInfo())) {
-					dependenciesPlantUMLString = addDependencyToUmlString(dependenciesPlantUMLString, nextMessage);
-				}
-			}
-
+		for (PluginDependency pluginDependency : dependencies) {
+			dependenciesPlantUMLString += generateDependencyUmlString(pluginDependency);
 		}
+//		
+//		for (DependencyValidationResultMessage nextMessage : result.getResultMessages()) {
+//
+//			if (innerConnections) {
+//				dependenciesPlantUMLString = addDependencyToUmlString(dependenciesPlantUMLString, nextMessage);
+//			} else {
+//				PluginInfo nextPlugin = getPluginInfo(nextMessage.getPluginId(), checker);
+//				PluginInfo dependentPlugin = getPluginInfo(nextMessage.getDependencyPluginId(), checker);
+//
+//				if (!nextPlugin.getPackageInfo().equals(dependentPlugin.getPackageInfo())) {
+//					dependenciesPlantUMLString = addDependencyToUmlString(dependenciesPlantUMLString, nextMessage);
+//				}
+//			}
+//
+//		}
 		return dependenciesPlantUMLString;
+	}
+	private String generateDependencyUmlString(PluginDependency pluginDependency) {
+		String label = "";
+		if (!pluginDependency.isAllowed())
+			label = ":<$error>";
+
+		String result = "[" + pluginDependency.getSourcePlugin().getPluginId() + "]" + "-->" + "["
+				+ pluginDependency.getDestPlugin().getPluginId() + "]" + label + "\n";
+		return result;
 	}
 
 	private String addDependencyToUmlString(String dependenciesPlantUMLString,
