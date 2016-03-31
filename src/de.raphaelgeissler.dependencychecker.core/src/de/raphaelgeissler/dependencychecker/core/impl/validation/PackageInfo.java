@@ -1,32 +1,33 @@
 package de.raphaelgeissler.dependencychecker.core.impl.validation;
 
-import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PackageInfo {
+public class PackageInfo implements Comparable<PackageInfo> {
 
 	private String name;
 
 	private List<PackageInfo> forbiddenPackages = new ArrayList<PackageInfo>();
-	
-	public PackageInfo(String name)
-	{
+
+	public PackageInfo(String name) {
 		this.name = name;
 	}
 
 	public String getName() {
 		return name;
 	}
-	
-	public void addForbiddenPackage(PackageInfo packageInfo)
-	{
+
+	public void addForbiddenPackage(PackageInfo packageInfo) {
 		forbiddenPackages.add(packageInfo);
 	}
-	
-	public List<PackageInfo> getForbiddenPackages()
-	{
+
+	public List<PackageInfo> getForbiddenPackages() {
 		return forbiddenPackages;
+	}
+
+	@Override
+	public int compareTo(PackageInfo secondPackageInfo) {
+		return this.name.compareTo(secondPackageInfo.name);
 	}
 
 	@Override
@@ -58,5 +59,5 @@ public class PackageInfo {
 	public String toString() {
 		return "PackageInfo [name=" + name + "]";
 	}
-	
+
 }
