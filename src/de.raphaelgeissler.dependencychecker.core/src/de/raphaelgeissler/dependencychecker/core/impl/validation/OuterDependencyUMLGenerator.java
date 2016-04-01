@@ -15,20 +15,19 @@ import de.raphaelgeissler.dependencychecker.core.api.DependencyValidationResultM
 
 public class OuterDependencyUMLGenerator implements PlantUmlGenerator {
 
-	private DependencyValidationResult result;
-	private Checker checker;
 	private boolean innerConnections;
 
 	private final List<PluginDependency> dependencies = new ArrayList<PluginDependency>();
 
+	private boolean ignoreUnkown;
+
 	public OuterDependencyUMLGenerator(DependencyValidationResult result, Checker checker) {
-		this(result, checker, true);
+		this(result, checker, true, false);
 	}
 
-	public OuterDependencyUMLGenerator(DependencyValidationResult result, Checker checker, boolean innerConnection) {
-		this.result = result;
-		this.checker = checker;
-		innerConnections = innerConnection;
+	public OuterDependencyUMLGenerator(DependencyValidationResult result, Checker checker, boolean innerConnections, boolean ignoreUnkown) {
+		this.innerConnections = innerConnections;
+		this.ignoreUnkown = ignoreUnkown;
 
 		generateDependencies(result, checker);
 	}
@@ -39,7 +38,11 @@ public class OuterDependencyUMLGenerator implements PlantUmlGenerator {
 			PluginInfo nextPlugin = getPluginInfo(nextMessage.getPluginId(), checker);
 			PluginInfo dependentPlugin = getPluginInfo(nextMessage.getDependencyPluginId(), checker);
 
-			if (innerConnections) {
+			if(ignoreUnkown && (nextPlugin.getPackageInfo().getName().equals("Unknown") || dependentPlugin.getPackageInfo().getName().equals("Unknown")))
+			{
+				//Do not add this dependency
+			}
+			else if (innerConnections) {
 				dependencies.add(new PluginDependency(nextPlugin, dependentPlugin, nextMessage.correct()));
 			} else if (!nextPlugin.getPackageInfo().equals(dependentPlugin.getPackageInfo())) {
 				dependencies.add(new PluginDependency(nextPlugin, dependentPlugin,  nextMessage.correct()));
@@ -113,21 +116,7 @@ public class OuterDependencyUMLGenerator implements PlantUmlGenerator {
 		for (PluginDependency pluginDependency : dependencies) {
 			dependenciesPlantUMLString += generateDependencyUmlString(pluginDependency);
 		}
-//		
-//		for (DependencyValidationResultMessage nextMessage : result.getResultMessages()) {
-//
-//			if (innerConnections) {
-//				dependenciesPlantUMLString = addDependencyToUmlString(dependenciesPlantUMLString, nextMessage);
-//			} else {
-//				PluginInfo nextPlugin = getPluginInfo(nextMessage.getPluginId(), checker);
-//				PluginInfo dependentPlugin = getPluginInfo(nextMessage.getDependencyPluginId(), checker);
-//
-//				if (!nextPlugin.getPackageInfo().equals(dependentPlugin.getPackageInfo())) {
-//					dependenciesPlantUMLString = addDependencyToUmlString(dependenciesPlantUMLString, nextMessage);
-//				}
-//			}
-//
-//		}
+
 		return dependenciesPlantUMLString;
 	}
 	private String generateDependencyUmlString(PluginDependency pluginDependency) {
@@ -138,17 +127,6 @@ public class OuterDependencyUMLGenerator implements PlantUmlGenerator {
 		String result = "[" + pluginDependency.getSourcePlugin().getPluginId() + "]" + "-->" + "["
 				+ pluginDependency.getDestPlugin().getPluginId() + "]" + label + "\n";
 		return result;
-	}
-
-	private String addDependencyToUmlString(String dependenciesPlantUMLString,
-			DependencyValidationResultMessage nextMessage) {
-		String label = "";
-		if (!nextMessage.correct())
-			label = ":<$error>";
-
-		dependenciesPlantUMLString += "[" + nextMessage.getPluginId() + "]" + "-->" + "["
-				+ nextMessage.getDependencyPluginId() + "]" + label + "\n";
-		return dependenciesPlantUMLString;
 	}
 
 }
