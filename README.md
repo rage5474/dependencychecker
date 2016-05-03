@@ -48,6 +48,9 @@ Installation can be done via Eclipse Update-Site:
         comps : CORE UI;
     }
 
+### CLI 
+Download link: https://www.googledrive.com/host/0BzgxECnugKH8V05YekdmbVNWNEU/dval/dval/snapshots/latest/product
+
 ### How can I get the development environment to extend this feature?
 * Download Eclipse Installer from here: https://eclipse.org/downloads/
 * Start Eclipse Installer.
