@@ -42,10 +42,7 @@ public class DependencyCheckerConsole implements IApplication {
 		if (noExit(cmd))
 			waitForInput();
 
-		if (validationSuccessful)
-			return IApplication.EXIT_OK;
-		else
-			return new Integer(1);
+		return IApplication.EXIT_OK;
 	}
 
 	private Options defineCLIOptions() {
