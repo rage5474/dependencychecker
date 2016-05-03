@@ -49,7 +49,7 @@ Installation can be done via Eclipse Update-Site:
     }
 
 ### CLI 
-Download link: https://www.googledrive.com/host/0BzgxECnugKH8V05YekdmbVNWNEU/dval/dval/snapshots/latest/product
+Download link: https://www.googledrive.com/host/0BzgxECnugKH8V05YekdmbVNWNEU/dval/snapshots/latest/product
 
 ### How can I get the development environment to extend this feature?
 * Download Eclipse Installer from here: https://eclipse.org/downloads/
